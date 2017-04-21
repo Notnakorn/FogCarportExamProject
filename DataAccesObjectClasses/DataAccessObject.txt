@@ -1,0 +1,426 @@
+//Change phonenumber to string (customer)
+//Change unit_name to part_name (part)
+//Change description to part_description (part)
+//Change part_ID to foreign key (partlist)
+
+package Data;
+
+
+import Data.Login.User;
+import Data.Product.Cupcake;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class DataAccessObject
+{
+
+    //The DataAccessObject class handles all requests to the server.
+    private final DBConnector conn;
+
+    public DataAccessObject() throws Exception
+    {
+        this.conn = new DBConnector();
+    }
+
+	
+	//Get methods for customer data.
+	public String GetCustomerName(String email){
+		Statement stmt;
+		String customerName = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select customer_name from customer where customer_email = " + email;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                customerName = rs.getString("customer_name");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return customerName;
+	
+	}
+	
+	public String GetCustomerPhone(String email){
+		Statement stmt;
+		String customerPhoneNumber = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select customer_phone_number from customer where customer_email = " + email;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                customerPhoneNumber = rs.getString("customer_phone_number");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return customerPhoneNumber;
+	
+	}
+	
+	public String GetCustomerAdress(String email){
+		Statement stmt;
+		String CustomerAdress = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select customer_adress from customer where customer_email = " + email;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                CustomerAdress = rs.getString("customer_adress");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return CustomerAdress;
+	
+	}
+	
+	//Get methods for part data.
+	public int getPartPackageSize(int partID)
+    {
+        Statement stmt;
+        int partPackageSize = 0;
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select package_Size from part where part_ID = " + partID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                partPackageSize = rs.getInt("package_Size");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return partPackageSize;
+    }
+	
+	public int getPartLength(int partID)
+    {
+        Statement stmt;
+        int partLength = 0;
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select part_Length from part where part_ID = " + partID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                partLength = rs.getInt("part_Length");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return partLength;
+    }
+	
+	public dobule getPartPrice(int partID)
+    {
+        Statement stmt;
+        double partPrice = 0;
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select part_Price from part where part_ID = " + partID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                partPrice = rs.getDouble("part_Price");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return partPrice;
+    }	
+	
+	public String GetPartName(int partID){
+		Statement stmt;
+		String partName = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select part_Name from part where part_ID = " + partID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                partName = rs.getString("part_Name");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return partName;
+	
+	}
+	
+	public String GetPartType(int partID){
+		Statement stmt;
+		String partType = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select part_Type from part where part_ID = " + partID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                partType = rs.getString("part_Type");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return partType;
+	
+	}
+	
+	public String GetPartDescription(int partID){
+		Statement stmt;
+		String partDescription = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select part_Description from part where part_ID = " + partID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                partDescription = rs.getString("part_Description");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return partDescription;
+	
+	}
+	
+	//Get methods for carport data.
+	public double GetCarportLength(int carportID){
+		Statement stmt;
+		double carportLength = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select carport_Length from carport where carport_ID = " + carportID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                carportLength = rs.getDouble("carport_Length");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return carportLength;
+	}
+	
+	public double GetCarportWidth(int carportID){
+		Statement stmt;
+		double carportWidth = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select carport_Width from carport where carport_ID = " + carportID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                carportWidth = rs.getDouble("carport_Width");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return carportWidth;
+	}
+	
+	public double GetCarportGableHeight(int carportID){
+		Statement stmt;
+		double carportGableHeight = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select carport_Gable_Height from carport where carport_ID = " + carportID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                carportGableHeight = rs.getDouble("carport_Gable_Height");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return carportGableHeight;
+	}
+	
+	public boolean GetCarportFlatRoof(int carportID){
+		Statement stmt;
+		boolean carportFlatRoof = false;
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select carport_Flat_Roof from carport where carport_ID = " + carportID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                carportFlatRoof = rs.getBoolean("carport_Flat_Roof");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return carportFlatRoof;
+	}
+	
+	public boolean GetCarportShed(int carportID){
+		Statement stmt;
+		boolean carportShed = false;
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select carport_Shed from carport where carport_ID = " + carportID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                carportShed = rs.getBoolean("carport_Shed");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return carportShed;
+	}
+	
+	public String GetCarportType(int carportID){
+		Statement stmt;
+		String carportType = "";
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select carport_type from carport where carport_ID = " + carportID;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                carportType = rs.getString("carport_type");
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return carportType;
+	}
+	
+	//Get methods for partList data,
+	public ArrayList<partListLine> GetPartListLine(int carportID){
+		Statement stmt;
+		PartListLine partListLine = null;
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "select * from partList natural join part where carport_ID = " + carportID;
+            ResultSet rs = stmt.execute(sql);
+
+            while (rs.next())
+            {
+			partListLine = new partListLine(
+			rs.getInt("part_ID"),
+			rs.getInt("part_List_ID"),
+			rs.getInt("part_Count")
+			);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return partListLine;
+	}
+	
+	//Get methods for customerOrder data.
+	Public int getCustomerOrder(String customerEmail, int carportID){
+	Statement stmt;
+	int orderID = null;	
+	try
+	{
+		 stmt = conn.getConnection().createStatement();
+         String sql = "select order_ID from customerOrder natural join customer natural join carport where customer_email = "+ customerEmail +" and carport_ID = " + carportID; 
+		 ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+			orderID = rs.getInt("order_ID");
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderID;
+	}
+	
+}

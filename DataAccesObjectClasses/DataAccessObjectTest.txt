@@ -1,0 +1,76 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Data;
+
+import Data.Login.User;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Smaug
+ */
+public class DataAccessObjectTest {
+    
+    public DataAccessObjectTest() {
+    }
+    
+     private static DataAccessObject dao;
+    
+      @Before
+    public void setUp() {
+        try {
+            dao = new DataAccessObject();
+        } catch (Exception ex) {
+            Logger.getLogger(DataAccessObjectTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Test
+    public void testGetCustomerName() {
+      
+        assertEquals("Henrik", dao.getCustomerName("test@test.com"));
+		
+    }
+	
+	@Test
+    public void testGetCustomerPhone() {  
+		//Change phonenumber to int!!!	 
+	
+		assertEquals("50505050",dao.GetCustomerPhone("test@test.com"));
+	}
+	
+	@Test
+    public void testGetPartPrice() {   
+		
+		assertEquals("100.0",dao.GetGetPartPrice(1001));
+	}
+	
+	@Test
+    public void testGetPartList() {
+		ArrayList<String> parts = new ArrayList<String>();
+        parts = dao.GetGetPartList(1);
+		assertEquals("100.0","parts[4]");
+		assertEquals()
+		assertEquals()
+		assertEquals()
+	}
+	@Test
+    public void testGetCustomerOrder() {
+		object cOrder;
+        cOrder = dao.GetGetCustomerOrder(1);
+		assertEquals("??",cOrder.getCarportLength());
+		assertEquals("??",cOrder.getCustomerName());
+	}
+	
+	
+}
