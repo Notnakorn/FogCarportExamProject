@@ -26,13 +26,39 @@ public class DataAccessObject
 
 	
 	//Get methods for customer data.
-	public String GetCustomerName(String email){
+		public void createCustomer(Customer customer)
+    {
+        Statement stmt;
+        
+        String customerName = customer.getCustomerName();
+		String customerPhoneNumber = customer.getCustomerPhoneNumber(); 
+		String customerEmail = customer.getCustomerEmail();
+		String customerAdress = customer.getCustomerAdress();
+        
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "insert into customer values (" + customerName + "," + customerPhoneNumber + "," 
+                    + customerEmail + "," + customerAdress +  ")";
+
+            stmt.execute(sql);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+	
+	
+	
+	
+	public String GetCustomerName(String customerEmail){
 		Statement stmt;
 		String customerName = "";
         try
         {
             stmt = conn.getConnection().createStatement();
-            String sql = "select customer_name from customer where customer_email = " + email;
+            String sql = "select customer_Name from customer where customer_Email = " + customerEmail;
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next())
@@ -49,13 +75,13 @@ public class DataAccessObject
 	
 	}
 	
-	public String GetCustomerPhone(String email){
+	public String GetCustomerPhone(String customerEmail){
 		Statement stmt;
 		String customerPhoneNumber = "";
         try
         {
             stmt = conn.getConnection().createStatement();
-            String sql = "select customer_phone_number from customer where customer_email = " + email;
+            String sql = "select customer_Phone_Number from customer where customer_Email = " + customerEmail;
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next())
@@ -72,18 +98,18 @@ public class DataAccessObject
 	
 	}
 	
-	public String GetCustomerAdress(String email){
+	public String GetCustomerAdress(String customerEmail){
 		Statement stmt;
-		String CustomerAdress = "";
+		String customerAdress = "";
         try
         {
             stmt = conn.getConnection().createStatement();
-            String sql = "select customer_adress from customer where customer_email = " + email;
+            String sql = "select customer_Adress from customer where customer_Email = " + customerEmail;
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next())
             {
-                CustomerAdress = rs.getString("customer_adress");
+                customerAdress = rs.getString("customer_adress");
 
             }
         }
@@ -91,7 +117,8 @@ public class DataAccessObject
         {
             Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return CustomerAdress;
+		
+        return customerAdress;
 	
 	}
 	
@@ -103,12 +130,12 @@ public class DataAccessObject
         try
         {
             stmt = conn.getConnection().createStatement();
-            String sql = "select package_Size from part where part_ID = " + partID;
+            String sql = "select part_Package_Size from part where part_ID = " + partID;
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next())
             {
-                partPackageSize = rs.getInt("package_Size");
+                partPackageSize = rs.getInt("part_Package_Size");
 
             }
         }
@@ -165,18 +192,18 @@ public class DataAccessObject
         return partPrice;
     }	
 	
-	public String GetPartName(int partID){
+	public String GetPartUnitName(int partID){
 		Statement stmt;
-		String partName = "";
+		String partUnitName = "";
         try
         {
             stmt = conn.getConnection().createStatement();
-            String sql = "select part_Name from part where part_ID = " + partID;
+            String sql = "select part_Unit_Name from part where part_ID = " + partID;
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next())
             {
-                partName = rs.getString("part_Name");
+                partUnitName = rs.getString("part_Unit_Name");
 
             }
         }
@@ -185,7 +212,7 @@ public class DataAccessObject
             Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
-        return partName;
+        return partUnitName;
 	
 	}
 	
