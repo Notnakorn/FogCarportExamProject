@@ -401,7 +401,7 @@ public class DataAccessObject
         return partListLine;
 	}
 	
-	//Get methods for customerOrder data.
+	//Get & place methods for customerOrder data.
 	Public int getCustomerOrder(String customerEmail, int carportID){
 	Statement stmt;
 	int orderID = null;	
@@ -422,5 +422,29 @@ public class DataAccessObject
         }
         return orderID;
 	}
+	
+	//Find out how we want to handle an order
+	//Example here is with a CustomerOrder class
+	public void createCustomerOrder(CustomerOrder customerOrder)
+    {
+        Statement stmt;
+        
+        int orderID = customerOrder.getOrderID();
+		String customerEmail = customerOrder.getCustomerEmail();
+        int carportID = customerOrder.getCarportID();
+        
+        try
+        {
+            stmt = conn.getConnection().createStatement();
+            String sql = "insert into orders values (" + orderID + "," + customerEmail + "," 
+                    + carportID+ ")";
+
+            stmt.execute(sql);
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(DataAccessObject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 	
 }
