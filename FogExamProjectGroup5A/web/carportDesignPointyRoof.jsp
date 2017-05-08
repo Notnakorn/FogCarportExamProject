@@ -10,7 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="carportDrawing.js"></script>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Carport Design</title>
     </head>
     <body>
@@ -27,10 +29,6 @@
         
         <h1>Her kan du designe din egen carport med spidst tag</h1>
         
-
-        <%String r = (String) request.getParameter("carportType");
-          double carportDesign = Integer.parseInt(r) * 100;
-        %>
         <p>
         
         <form action= "FrontController" method="GET">
@@ -57,7 +55,7 @@
         
         
         
-        <svg  id="carport" width="800" height="800" style="border-color: brown; border-left-width: 0;">
+        <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" id="carport" width="800" height="800" style="border-color: brown; border-left-width: 0;">
         <rect id="carportFromSideRect1" x="0.0" y="0.0" width="0.0" height="0.0" fill="white"  stroke="black" strokewidth="5" borderleftwidth="0"/>
         <line id="roofFromSideBottomLine" transform="translate(0.0,0.0)" x1="0" y1="0" x2="0" y2="0" stroke="#9b6c2e" stroke-width="5"/>
         <line id="roofFromSideTopLine" transform="translate(0.0,0.0)" x1="0" y1="0" x2="0" y2="0" stroke="#9b6c2e" stroke-width="5"/>
