@@ -38,7 +38,7 @@ class carportDesignCommand implements Command{
         double length = 0;
         int angle = 0;
         
-         try{
+        try{
         String w = (String) request.getParameter("width");
         String l = (String) request.getParameter("length");
         String a = (String) request.getParameter("angle");
