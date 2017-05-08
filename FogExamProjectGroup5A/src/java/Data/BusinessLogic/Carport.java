@@ -24,19 +24,19 @@ public class Carport {
         }
         
         if(carportLength < 240 || carportLength > 780){
-        throw new IllegalArgumentException();  
-        }
-        else
-        {
-        this.carportLength = carportLength;
+            throw new IllegalArgumentException();  
+            }
+            else
+            {
+            this.carportLength = carportLength;
         }
         
         if(carportWidth < 240 || carportWidth > 750){
-        throw new IllegalArgumentException();  
-        }
-        else
-        {
-        this.carportWidth = carportWidth;
+            throw new IllegalArgumentException();  
+            }
+            else
+            {
+            this.carportWidth = carportWidth;
         }
     }
 
