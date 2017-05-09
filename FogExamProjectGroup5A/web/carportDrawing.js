@@ -19,6 +19,7 @@
             
                 drawCarportFromSide();
                 drawCarportFromFront();
+                drawCarportFromTop();
     }
        
    
@@ -139,9 +140,23 @@
         } 
         
 //        To be done Carport from top drawing:
-//        function drawCarportFromTop(){
-//             var carport = document.getElementById("carport3");
-//        }
+        function drawCarportFromTop(){
+            
+            var carport = document.getElementById("carport3");
+            var carportFromTopRect1 = document.getElementById("carportFromTopRect1");
+            var newWidth = document.getElementById("width");
+            var newHeight = document.getElementById("height");
+            var newLength = document.getElementById("length");
+             
+            carport.setAttribute("height", newWidth.value);
+            carport.setAttribute("width", newLength.value);
+            carportFromTopRect1.setAttribute("width", newWidth.value);
+            carportFromTopRect1.setAttribute("height", newLength.value);
+            carportFromTopRect1.setAttribute("x", "5.0");
+            carportFromTopRect1.setAttribute("y", "5.0");
+             
+             
+        }
         
         function downloadCarportSideSVG(){
             
@@ -163,6 +178,18 @@
             var downloadLink = document.createElement("a");
             downloadLink.href = svgUrl;
             downloadLink.download = "carportFront.svg";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+        function downloadCarportTopSVG(){
+            
+            var svgData = document.getElementById("carport3").outerHTML;
+            var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+            var svgUrl = URL.createObjectURL(svgBlob);
+            var downloadLink = document.createElement("a");
+            downloadLink.href = svgUrl;
+            downloadLink.download = "carportTop.svg";
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
