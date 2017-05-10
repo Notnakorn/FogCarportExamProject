@@ -7,6 +7,7 @@ package Data.Calculator;
 
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Part;
+import Data.BusinessLogic.PartList;
 import Data.BusinessLogic.PartListLine;
 import java.util.ArrayList;
 
@@ -27,22 +28,22 @@ public class CalculatorFacadeImpl implements CalculatorFacade {
     
     
     @Override
-    public ArrayList<PartListLine> calculateHRNoShed(ArrayList<Part> list, CarportHR cp) {
+    public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp) {
         return cc.calculateHRNoShed(list, cp);
     }
 
     @Override
-    public ArrayList<PartListLine> calculateHRWithShed(ArrayList<Part> list, CarportHR cp) {
-       return cc.calculatorHRWittShed(list, cp);
+    public PartList calculateHRWithShed(ArrayList<Part> list, CarportHR cp) {
+       return cc.calculateHRWittShed(list, cp);
     }
 
     @Override
-    public ArrayList<PartListLine> calculateDURNoShed(ArrayList<Part> list, CarportHR cp) {
+    public PartList calculateDURNoShed(ArrayList<Part> list, CarportHR cp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<PartListLine> calculateDURWithShed(ArrayList<Part> list, CarportHR cp) {
+    public PartList calculateDURWithShed(ArrayList<Part> list, CarportHR cp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

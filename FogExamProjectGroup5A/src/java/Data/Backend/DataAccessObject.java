@@ -62,7 +62,6 @@ class DataAccessObject
     }
         
   
-    
     public Part getPartHR(int partID) {
         Part p = null;
         String SQLString
@@ -89,6 +88,7 @@ class DataAccessObject
 
         return p;
     }
+    
     
     public ArrayList<Part> getPartListHR(){
             //Creates an ArrayList with parts
