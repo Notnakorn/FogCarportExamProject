@@ -17,11 +17,11 @@ public class CarportHR extends Carport {
        
         super(carportLength, carportWidth,sh);
         if(angle < 15 || angle > 45){
-        throw new IllegalArgumentException();  
+            throw new IllegalArgumentException();  
         }
         else{
-        this.angle = angle;
-    }
+            this.angle = angle;
+        }
     }
 
     public int getAngle() {

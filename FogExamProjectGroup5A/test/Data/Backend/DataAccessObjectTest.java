@@ -55,6 +55,5 @@ public class DataAccessObjectTest {
     public void testGetPartCount() {
         int p = dao.getPartCount(1000,1999);
         assertTrue("Get Part failed", p == 16);
-    }
-    
+    }    
 }
