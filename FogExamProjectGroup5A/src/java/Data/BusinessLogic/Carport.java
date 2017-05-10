@@ -17,7 +17,7 @@ public class Carport {
     public Carport(double carportLength, double carportWidth, Shed sh) {
         
         if(sh != null){
-            if((sh.getShedLength()+15)>carportLength || (sh.getShedWidth()+15)>carportWidth){
+            if((sh.getShedLength()+30)>carportLength || (sh.getShedWidth()+30)>carportWidth){
                 throw new IllegalArgumentException(); 
             }
           this.shed = sh;  

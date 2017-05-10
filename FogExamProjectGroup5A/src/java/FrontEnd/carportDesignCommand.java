@@ -54,7 +54,8 @@ class carportDesignCommand implements Command{
         
 
         try{
-            Shed sh = new Shed(0,0);
+            //Give shed parameters!
+            Shed sh = null;
             Carport carportHR = new CarportHR(width,length,sh,angle);
             
         }

@@ -23,11 +23,11 @@ class reviewCommand implements Command{
 
         int review = 0;
         String r = (String) request.getParameter("smiley");
-        review = Integer.parseInt(r);
+//        review = Integer.parseInt(r);
 
         
         //boolean status = facade.storeReview(smiley);
-        System.out.println(review);
+        
         
         return next;
     }
