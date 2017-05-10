@@ -2,9 +2,11 @@
 package Data.Calculator;
 
 import Data.Backend.DBFacadeImpl;
+import Data.BusinessLogic.Carport;
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Part;
 import Data.BusinessLogic.PartListLine;
+import Data.BusinessLogic.Shed;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +45,9 @@ public class CarportCalculatorTest {
         
         //Creates an ArrayList containing Part's for usage in this test method. 
         list = new ArrayList<Part>();
-        list = dbf.getPartListHR();  
+        list = dbf.getPartListHR();
+        
+        
     }
 
     @After
@@ -60,10 +64,12 @@ public class CarportCalculatorTest {
     /**
      * Test of calculateHRNoShed method, of class CarportCalculator.
      */
-//    @Test
-//    public void testCalculateHRNoShedCount() {
-//        assertTrue("Calculator failed",cc.calculateHRNoShed(list, 480, 360, 45).get(0).getCount() == 2);       
-//    }
+    @Test
+    public void testCalculateHRNoShedCount() {
+        Shed sh = new Shed(460,340);
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).get(0).getCount() == 4);       
+    }
 //    
 //    @Test
 //    public void testCalculateHRNoShedDescription() {
