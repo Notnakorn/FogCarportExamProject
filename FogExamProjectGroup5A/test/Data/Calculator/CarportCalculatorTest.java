@@ -70,16 +70,20 @@ public class CarportCalculatorTest {
         CarportHR cp = new CarportHR(480,360,sh,45);
         assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).get(0).getCount() == 4);       
     }
-//    
-//    @Test
-//    public void testCalculateHRNoShedDescription() {
-//        assertTrue("Calculator failed",cc.calculateHRNoShed(list, 480, 360, 45).get(0).getPart().getPartDescription().equalsIgnoreCase("Vindskeder på rejsning"));        
-//    }
-//    
-//    @Test
-//    public void testCalculateHRNoShedLength() {
-//        assertTrue("Calculator failed",cc.calculateHRNoShed(list, 480, 360, 45).get(5).getPart().getPartLength() == 480);        
-//    }
+    
+    @Test
+    public void testCalculateHRNoShedDescription() {
+        Shed sh = new Shed(0,0);
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).get(0).getPart().getPartDescription().equalsIgnoreCase("Vindskeder på rejsning"));        
+    }
+    
+    @Test
+    public void testCalculateHRNoShedLength() {
+        Shed sh = new Shed(0,0);
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).get(5).getPart().getPartLength() == 480);        
+    }
 //    
 //    /**
 //     * Test of calculatorHRWittShed method, of class CarportCalculator.
