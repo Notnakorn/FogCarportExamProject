@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Data.Backend;
-
-//Change phonenumber to string (customer)
-//Change unit_name to part_name (part)
-//Change description to part_description (part)
-//Change part_ID to foreign key (partlist)
-
 
 
 import Data.BusinessLogic.Part;
@@ -21,6 +11,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+/**
+ * Holds communication to the database 
+ * We're using MySQL together with java to get informations from our database.
+ * Our parts on the database are in 3 categories, with the partID in the intervals;
+ * 1000-1999, 2000-2999 and 3000-3999. 
+ * 
+ * @author Kasper
+ * 
+ * 
+ */
 
 class DataAccessObject
 {

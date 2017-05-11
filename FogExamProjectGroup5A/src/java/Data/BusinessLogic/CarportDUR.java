@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Data.BusinessLogic;
 
 /**
- *
- * @author Kornh
+ * This class extends carport, 
+ * There seem to be devidede opnions about subclasses, but since its part of our pensum,
+ * we choose to include it. 
+ * 
+ * @author Kasper
  */
 public class CarportDUR extends Carport{
     
