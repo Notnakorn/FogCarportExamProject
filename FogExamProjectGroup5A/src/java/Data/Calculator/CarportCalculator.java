@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Data.Calculator;
 
 import Data.BusinessLogic.CarportHR;
@@ -12,8 +8,11 @@ import Data.BusinessLogic.PartListLine;
 import java.util.ArrayList;
 
 /**
- *
- * @author Katja Kaj
+ * Holds our CarportCalculator
+ * Its a messy class, but it works. 
+ * We might spends more time later adding more business logic to this class. 
+ * 
+ * @author Kasper
  */
 
 

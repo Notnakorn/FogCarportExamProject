@@ -8,8 +8,11 @@ import java.sql.SQLException;
 
 /**
  * Holds connection to database 
- *
- * @author tm
+ * You can see that we connect to our fogDatabase.
+ * 
+ * @author tm / recieved on gitHub
+ * 
+ * 
  */
 public final class DBConnector {
 

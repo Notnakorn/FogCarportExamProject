@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *  Encapsulates the data access layer
- * @author tm
+ * @author Kasper
  */
 public class DBFacadeImpl implements DBFacade {
     private DataAccessObject dao;
