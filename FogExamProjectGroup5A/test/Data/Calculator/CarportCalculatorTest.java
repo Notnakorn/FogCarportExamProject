@@ -2,9 +2,12 @@
 package Data.Calculator;
 
 import Data.Backend.DBFacadeImpl;
+import Data.BusinessLogic.Carport;
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Part;
+import Data.BusinessLogic.PartList;
 import Data.BusinessLogic.PartListLine;
+import Data.BusinessLogic.Shed;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +46,9 @@ public class CarportCalculatorTest {
         
         //Creates an ArrayList containing Part's for usage in this test method. 
         list = new ArrayList<Part>();
-        list = dbf.getPartListHR();  
+        list = dbf.getPartListHR();
+        
+        
     }
 
     @After
@@ -60,20 +65,49 @@ public class CarportCalculatorTest {
     /**
      * Test of calculateHRNoShed method, of class CarportCalculator.
      */
-//    @Test
-//    public void testCalculateHRNoShedCount() {
-//        assertTrue("Calculator failed",cc.calculateHRNoShed(list, 480, 360, 45).get(0).getCount() == 2);       
-//    }
-//    
-//    @Test
-//    public void testCalculateHRNoShedDescription() {
-//        assertTrue("Calculator failed",cc.calculateHRNoShed(list, 480, 360, 45).get(0).getPart().getPartDescription().equalsIgnoreCase("Vindskeder på rejsning"));        
-//    }
-//    
-//    @Test
-//    public void testCalculateHRNoShedLength() {
-//        assertTrue("Calculator failed",cc.calculateHRNoShed(list, 480, 360, 45).get(5).getPart().getPartLength() == 480);        
-//    }
+    @Test
+    public void testCalculateHRNoShedCount() {
+        Shed sh = new Shed(450,330);
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).getPartList().get(0).getCount() == 4);       
+    }
+    
+    @Test
+    public void testCalculateHRNoShedDescription() {
+        Shed sh = null;
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).getPartList().get(0).getPart().getPartDescription().equalsIgnoreCase("Vindskeder på rejsning"));        
+    }
+    
+    @Test
+    public void testCalculateHRNoShedLength() {
+        Shed sh = null;
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).getPartList().get(5).getPart().getPartLength() == 480);        
+    }
+    
+    @Test
+    public void testCalculateHRNoShedPrice() {
+        Shed sh = null;
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        
+        PartList pl = null;
+        
+        pl = cc.calculateHRNoShed(list, cp);
+        System.out.println(pl.toString());
+        assertTrue("Calculator failed",pl.getPrice() == 1299);        
+    }
+    @Test
+    public void testCalculateHRWithShedPrice() {
+        Shed sh = new Shed(450,330);
+        CarportHR cp = new CarportHR(480,360,sh,45);
+        
+        PartList pl = null;
+        
+        pl = cc.calculateHRWittShed(list, cp);
+        System.out.println(pl.toString());
+        assertTrue("Calculator failed",pl.getPrice() == 1836);        
+    }
 //    
 //    /**
 //     * Test of calculatorHRWittShed method, of class CarportCalculator.

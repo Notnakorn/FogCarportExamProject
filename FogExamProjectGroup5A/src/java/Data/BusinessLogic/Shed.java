@@ -11,8 +11,16 @@ public class Shed {
     private double shedWidth;
 
     public Shed(double shedLength, double shedWidth) {
-        this.shedLength = shedLength;
+        if(shedLength < 150 || shedLength > 750){
+            throw new IllegalArgumentException(); 
+        } else {
+            this.shedLength = shedLength;
+        }
+        if(shedLength < 150 || shedLength > 720){
+            throw new IllegalArgumentException(); 
+        } else {
         this.shedWidth = shedWidth;
+        }
     }
 
     public double getShedLength() {

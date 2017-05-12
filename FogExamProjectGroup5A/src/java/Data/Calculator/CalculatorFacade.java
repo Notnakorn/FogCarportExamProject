@@ -7,6 +7,7 @@ package Data.Calculator;
 
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Part;
+import Data.BusinessLogic.PartList;
 import Data.BusinessLogic.PartListLine;
 import java.util.ArrayList;
 
@@ -16,10 +17,10 @@ import java.util.ArrayList;
  */
 public interface CalculatorFacade {
     
-    public ArrayList<PartListLine> calculateHRNoShed(ArrayList<Part> list, CarportHR cp);
-    public ArrayList<PartListLine> calculateHRWithShed(ArrayList<Part> list, CarportHR cp);
-    public ArrayList<PartListLine> calculateDURNoShed(ArrayList<Part> list, CarportHR cp);
-    public ArrayList<PartListLine> calculateDURWithShed(ArrayList<Part> list, CarportHR cp);
+    public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp);
+    public PartList calculateHRWithShed(ArrayList<Part> list, CarportHR cp);
+    public PartList calculateDURNoShed(ArrayList<Part> list, CarportHR cp);
+    public PartList calculateDURWithShed(ArrayList<Part> list, CarportHR cp);
     
     
 }
