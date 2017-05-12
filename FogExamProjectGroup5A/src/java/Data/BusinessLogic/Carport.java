@@ -3,6 +3,9 @@
 package Data.BusinessLogic;
 
 /**
+ * This is our most important object.
+ * It contains business logic in the constructor, to keep customers 
+ * from ordering a carport that we cant provide. 
  *
  * @author kasper
  */

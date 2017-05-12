@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Carport Design</title>
     </head>
-        <body>
+         <body>
         
          
         
@@ -27,14 +27,18 @@
                 <li><a href="http://207.154.197.214:8080/TheEnd/error.html">Error</a></li>
             </ul>
         
-        <h1>Her kan du designe din egen carport med spidst tag</h1>
+        <h1>Her kan du designe din egen carport med rejsning</h1>
         
         <p>
         
         <form action= "FrontController" method="GET">
         <input type="number" name="length" id="length" value="">
         <input type="number" name="width" id="width" value="">
+        <input type="number" name="shedLength" id="shedLength" value="">
+        <input type="number" name="shedWidth" id="shedWidth" value="">
         <input type="hidden" id="height" value="210" >
+        
+        
         <select id="selectedAngle" type ="number" name="angle" value="">
             <option value="15">15</option>
             <option value="20">20</option>
@@ -58,6 +62,7 @@
         <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" id="carport1" width="800" height="800" style="border-color: brown; border-left-width: 0;">
             
         <rect id="carportFromSideRect1" x="0.0" y="0.0" width="0.0" height="0.0" fill="white"  stroke="black" strokewidth="5" borderleftwidth="0"/>
+        <rect id="carportFromSideRect2" x="0.0" y="0.0" width="0.0" height="0.0" fill="black"  stroke="black" strokewidth="5" borderleftwidth="0"/>
         <line id="roofFromSideBottomLine" transform="translate(0.0,0.0)" x1="0" y1="0" x2="0" y2="0" stroke="#9b6c2e" stroke-width="5"/>
         <line id="roofFromSideTopLine" transform="translate(0.0,0.0)" x1="0" y1="0" x2="0" y2="0" stroke="#9b6c2e" stroke-width="5"/>
         
@@ -84,7 +89,17 @@
         <input type="button" value="Download" onclick="downloadCarportFrontSVG();">
         </div>
         
+        <div id="div3">
+        <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" id="carport3" width="800" height="800" style="border-color: brown; border-left-width: 0;">
+        <rect id="carportFromTopRect1" x="0.0" y="0.0" width="0.0" height="0.0" fill="white"  stroke="black" strokewidth="5" borderleftwidth="0"/>
+        <rect id="carportFromTopRect2" x="0.0" y="0.0" width="0.0" height="0.0" fill="white"  stroke="black" strokewidth="5"/>
+ 
+
+        </svg>
+        
+        <input type="button" value="Download" onclick="downloadCarportTopSVG();">
+        </div>
+        
         
     </body>
 </html>
-

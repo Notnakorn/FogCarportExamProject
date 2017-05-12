@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Data.BusinessLogic;
 
 import java.util.ArrayList;
 
 /**
+ * The PartList holds partlistlines that then holds parts.
+ * The PartList has a Overrided toString method that is used to generate the email 
+ * that is then send to customer and Fog-worker. 
  *
  * @author kasper
  */
