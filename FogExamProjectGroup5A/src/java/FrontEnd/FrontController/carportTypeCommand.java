@@ -38,11 +38,11 @@ class carportTypeCommand implements Command{
         //boolean status = facade.storeReview(smiley);
         if(carportType == 1)
         {
-          return "carportDesignFlatRoof.jsp";  
+          return "carportDesignFlatRoof2.jsp";  
         }
         else if (carportType == 2)
         {
-          return "carportDesignPointyRoof.jsp";
+          return "carportDesignPointyRoof2.jsp";
         }
        return next;
     }

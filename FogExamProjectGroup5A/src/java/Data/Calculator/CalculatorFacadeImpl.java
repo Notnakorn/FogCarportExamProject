@@ -1,6 +1,7 @@
 
 package Data.Calculator;
 
+import Data.BusinessLogic.CarportDUR;
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Part;
 import Data.BusinessLogic.PartList;
@@ -37,12 +38,12 @@ public class CalculatorFacadeImpl implements CalculatorFacade {
     }
 
     @Override
-    public PartList calculateDURNoShed(ArrayList<Part> list, CarportHR cp) {
+    public PartList calculateDURNoShed(ArrayList<Part> list, CarportDUR cp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public PartList calculateDURWithShed(ArrayList<Part> list, CarportHR cp) {
+    public PartList calculateDURWithShed(ArrayList<Part> list, CarportDUR cp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

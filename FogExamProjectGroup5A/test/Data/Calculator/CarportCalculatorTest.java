@@ -111,7 +111,6 @@ public class CarportCalculatorTest {
         
         pl = cc.calculateHRWittShed(list, cp);
         String s = pl.toString();
-        sm.sendEmail(pl,c);
         assertTrue("Calculator failed",pl.getPrice() == 1836);        
     }
 //    

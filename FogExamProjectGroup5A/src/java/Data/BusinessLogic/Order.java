@@ -9,8 +9,22 @@ package Data.BusinessLogic;
  */
 public class Order {
     
-    private int orderID;
     private String customerEmail;
-    private int carportID;
+    private String orderDetails;
+
+    public Order(String customerEmail, String orderDetails) {
+        this.customerEmail = customerEmail;
+        this.orderDetails = orderDetails;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public String getOrderDetails() {
+        return orderDetails;
+    }
+    
+    
     
 }
