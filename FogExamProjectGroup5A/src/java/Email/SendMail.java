@@ -46,12 +46,11 @@ public class SendMail {
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse("testmailfog@gmail.com"));
             message.setSubject("Bestilling fra " + c.getCustomerName());
-//            message.setText("Bestilling fra kunde: " + c.getCustomerName()
-//                    + "\nKundes telefonnummber: " + c.getCustomerPhoneNumber()
-//                    + "\nKundes email: " + c.getCustomerEmail()
-//                + "\n\n"+pl.toString()
-//                + "\n\n Levering til: " + c.getCustomerAdress());
-            message.setText(pl.toString());
+            message.setText("Bestilling fra kunde: " + c.getCustomerName()
+                    + "\nKundes telefonnummber: " + c.getCustomerPhoneNumber()
+                    + "\nKundes email: " + c.getCustomerEmail()
+                + "\n\n"+pl.toString()
+                + "\n\n Levering til: " + c.getCustomerAdress());
 
             Transport.send(message);
 

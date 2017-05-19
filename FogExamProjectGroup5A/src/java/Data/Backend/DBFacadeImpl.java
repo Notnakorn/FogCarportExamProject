@@ -20,17 +20,36 @@ public class DBFacadeImpl implements DBFacade {
         this.dao = new DataAccessObject();
     }
     
-    public Part getPart(int pno) {
+    public Part getPartHR(int pno) {
         return dao.getPartHR(pno);
      }
     
-    public int getPartCount(int l, int h){
-        return dao.getPartCount(l, h);
+    public Part getPartDUR(int pno) {
+        return dao.getPartHR(pno);
+     }
+    
+    public int getPartCountHR(int l, int h){
+        return dao.getPartCountHR(l, h);
+    }
+    
+    public int getPartCountDUR(int l, int h){
+        return dao.getPartCountHR(l, h);
     }
     
     public ArrayList<Part> getPartListHR(){
         return dao.getPartListHR();
     }
     
+    public ArrayList<Part> getPartListDUR(){
+        return dao.getPartListHR();
+    }
+    
+    public void createCustomer(String cName, String cNumber, String cEmail, String cAdress){
+        dao.createCustomer(cName, cNumber, cEmail, cAdress);
+    }
+    
+    public void createOrder(){
+        
+    }
     
 }
