@@ -17,7 +17,12 @@ import java.util.ArrayList;
 
 
 public interface DBFacade {
-    public Part getPart (int pno);
-    public int getPartCount (int l, int h);
+    public Part getPartHR (int pno);
+    public Part getPartDUR (int pno);
+    public int getPartCountHR (int l, int h);
+    public int getPartCountDUR (int l, int h);
     public ArrayList<Part> getPartListHR();
+    public ArrayList<Part> getPartListDUR();
+    public void createCustomer(String cName, String cNumber, String cEmail, String cAdress);
+    public void createOrder();
 }

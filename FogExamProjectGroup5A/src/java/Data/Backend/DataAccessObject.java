@@ -39,7 +39,7 @@ class DataAccessObject
     }
     
 
-    public int getPartCount(int l, int h)
+    public int getPartCountHR(int l, int h)
     {
         int partsCount = 0;
         String SQLString
@@ -62,6 +62,29 @@ class DataAccessObject
         return partsCount;
     }
         
+    public int getPartCountDUR(int l, int h)
+    {
+        int partsCount = 0;
+        String SQLString
+                = "select COUNT(part_ID) "
+                + "from partDUR "
+                + "where part_ID between ? and ?";
+        
+        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
+            statement.setInt(1, l);
+            statement.setInt(2, h);
+            
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                partsCount = rs.getInt(1);
+            }
+            } catch (SQLException e) {
+            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+        }
+
+        return partsCount;
+    }
+    
   
     public Part getPartHR(int partID) {
         Part p = null;
@@ -90,24 +113,50 @@ class DataAccessObject
         return p;
     }
     
+    public Part getPartDUR(int partID) {
+        Part p = null;
+        String SQLString
+                = "select * "
+                + "from partDUR "
+                + "where part_ID = ?";
+
+        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
+            statement.setInt(1, partID);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                p = new Part(partID,
+                        rs.getInt(2),
+                        rs.getDouble(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7));
+            }
+        } catch (SQLException e) {
+            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+        }
+
+        return p;
+    }
     
     public ArrayList<Part> getPartListHR(){
             //Creates an ArrayList with parts
         ArrayList<Part> parts = new ArrayList<Part>();
         
-        for (int i = 1; i <= getPartCount(1000,1999); i++){
+        for (int i = 1; i <= getPartCountHR(1000,1999); i++){
         Part part = null;  
         part = getPartHR(1000+i);
         parts.add(part);
         }
         
-        for (int i = 1; i <= getPartCount(2000,2999); i++){
+        for (int i = 1; i <= getPartCountHR(2000,2999); i++){
         Part part = null;  
         part = getPartHR(2000+i);
         parts.add(part);
         }
         
-        for (int i = 1; i <= getPartCount(3000,3999); i++){
+        for (int i = 1; i <= getPartCountHR(3000,3999); i++){
         Part part = null;  
         part = getPartHR(3000+i);
         parts.add(part);
@@ -115,6 +164,69 @@ class DataAccessObject
         return parts;
     }
     
+    public ArrayList<Part> getPartListDUR(){
+            //Creates an ArrayList with parts
+        ArrayList<Part> parts = new ArrayList<Part>();
+        
+        for (int i = 1; i <= getPartCountDUR(1000,1999); i++){
+        Part part = null;  
+        part = getPartHR(1000+i);
+        parts.add(part);
+        }
+        
+        for (int i = 1; i <= getPartCountDUR(2000,2999); i++){
+        Part part = null;  
+        part = getPartHR(2000+i);
+        parts.add(part);
+        }
+        
+        for (int i = 1; i <= getPartCountDUR(3000,3999); i++){
+        Part part = null;  
+        part = getPartHR(3000+i);
+        parts.add(part);
+        }
+        return parts;
+    }
     
-	
+    public void createCustomer(String cName, String cNumber, String cEmail, String cAdress)
+    {
+        
+        String SQLString
+                = "insert into customer "
+                + "values (?,?,?,?)";
+        
+        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
+            statement.setString(1, cName);
+            statement.setString(2, cNumber);
+            statement.setString(3,cEmail);
+            statement.setString(4,cAdress);
+            
+            statement.execute();
+            
+            } catch (SQLException e) {
+            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+        }
+
+    }
+    
+    public void createORder(String cName, String cNumber, String cEmail, String cAdress)
+    {
+        
+        String SQLString
+                = "insert into customer "
+                + "values (?,?,?,?)";
+        
+        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
+            statement.setString(1, cName);
+            statement.setString(2, cNumber);
+            statement.setString(3,cEmail);
+            statement.setString(4,cAdress);
+            
+            statement.execute();
+            
+            } catch (SQLException e) {
+            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+        }
+
+    }
 }
