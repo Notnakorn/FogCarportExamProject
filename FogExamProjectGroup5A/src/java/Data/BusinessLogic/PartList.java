@@ -47,7 +47,7 @@ public class PartList {
             res.append("  ");          
             res.append('\n');
         }
-        res.append("\nTotal: ");
+        res.append("\nTotal price: ");
         res.append(price);
         return res.toString();
     }
