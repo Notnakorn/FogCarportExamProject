@@ -2,6 +2,7 @@
 package Data.Backend;
 
 
+import Data.BusinessLogic.Order;
 import Data.BusinessLogic.Part;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -209,18 +210,34 @@ class DataAccessObject
 
     }
     
-    public void createORder(String cName, String cNumber, String cEmail, String cAdress)
+    public void createOrder(String cEmail, String oDetails)
     {
         
         String SQLString
-                = "insert into customer "
-                + "values (?,?,?,?)";
+                = "insert into customerOrder "
+                + "values (?,?)";
         
         try (PreparedStatement statement = con.prepareStatement(SQLString)) {
-            statement.setString(1, cName);
-            statement.setString(2, cNumber);
-            statement.setString(3,cEmail);
-            statement.setString(4,cAdress);
+            statement.setString(1, cEmail);
+            statement.setString(2, oDetails);
+            
+            statement.execute();
+            
+            } catch (SQLException e) {
+            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+        }
+
+    }
+    
+     public void createReview(int reviewScore)
+    {
+        
+        String SQLString
+                = "insert into review "
+                + "values (?)";
+        
+        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
+            statement.setInt(1, reviewScore);
             
             statement.execute();
             

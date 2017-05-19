@@ -1,6 +1,7 @@
 
 package Data.Calculator;
 
+import Data.BusinessLogic.CarportDUR;
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Part;
 import Data.BusinessLogic.PartList;
@@ -41,12 +42,10 @@ public double calculatePrice(ArrayList<PartListLine> pll){
     
     return price;
 }
-public PartList calculateDURNoShed(ArrayList<Part> list, CarportHR cp){
+public PartList calculateDURNoShed(ArrayList<Part> list, CarportDUR cp){
     //Creates an ArrayList with parts
         ArrayList<Part> parts = list;
         
-        //Calculates the size of the roof
-        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getCarportWidth());
 
         ArrayList<PartListLine> plll = new ArrayList<PartListLine>();
         
@@ -201,12 +200,10 @@ public PartList calculateDURNoShed(ArrayList<Part> list, CarportHR cp){
         
     
 }
-public PartList calculateDURWithShed(ArrayList<Part> list, CarportHR cp){
+public PartList calculateDURWithShed(ArrayList<Part> list, CarportDUR cp){
     //Creates an ArrayList with parts
         ArrayList<Part> parts = list;
         
-        //Calculates the size of the roof
-        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getCarportWidth());
 
         ArrayList<PartListLine> plll = new ArrayList<PartListLine>();
         
