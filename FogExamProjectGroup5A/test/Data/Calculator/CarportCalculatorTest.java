@@ -4,10 +4,12 @@ package Data.Calculator;
 import Data.Backend.DBFacadeImpl;
 import Data.BusinessLogic.Carport;
 import Data.BusinessLogic.CarportHR;
+import Data.BusinessLogic.Customer;
 import Data.BusinessLogic.Part;
 import Data.BusinessLogic.PartList;
 import Data.BusinessLogic.PartListLine;
 import Data.BusinessLogic.Shed;
+import Email.SendMail;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,6 +27,7 @@ public class CarportCalculatorTest {
     CarportCalculator cc;
     DBFacadeImpl dbf;
     ArrayList<Part> list;
+    SendMail sm;
     
     
     public CarportCalculatorTest() {
@@ -43,12 +46,12 @@ public class CarportCalculatorTest {
     public void setUp() throws Exception {
         cc = new CarportCalculator();
         dbf = new DBFacadeImpl();
+        sm = new SendMail();
         
         //Creates an ArrayList containing Part's for usage in this test method. 
         list = new ArrayList<Part>();
         list = dbf.getPartListHR();
-        
-        
+      
     }
 
     @After
@@ -104,8 +107,11 @@ public class CarportCalculatorTest {
         
         PartList pl = null;
         
+        Customer c = new Customer("test","test","test","test");
+        
         pl = cc.calculateHRWittShed(list, cp);
-        System.out.println(pl.toString());
+        String s = pl.toString();
+        sm.sendEmail(pl,c);
         assertTrue("Calculator failed",pl.getPrice() == 1836);        
     }
 //    

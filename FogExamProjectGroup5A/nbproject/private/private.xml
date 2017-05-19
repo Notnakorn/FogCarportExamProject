@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Kornh/Documents/NetBeansProjects/FogCarportExamProjectGit/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignFlatRoof.jsp</file>
             <file>file:/C:/Users/Kornh/Documents/NetBeansProjects/FogCarportExamProjectGit/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Part.java</file>
             <file>file:/C:/Users/Kornh/Documents/NetBeansProjects/FogCarportExamProjectGit/FogCarportExamProject/FogExamProjectGroup5A/web/carportDrawing.js</file>
@@ -10,6 +11,36 @@
             <file>file:/C:/Users/Kornh/Documents/NetBeansProjects/FogCarportExamProjectGit/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController.java</file>
             <file>file:/C:/Users/Kornh/Documents/NetBeansProjects/FogCarportExamProjectGit/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/carportTypeCommand.java</file>
             <file>file:/C:/Users/Kornh/Documents/NetBeansProjects/FogCarportExamProjectGit/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignPointyRoof.jsp</file>
+=======
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Backend/DBConnector.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/NullCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/Command.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/FrontController.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/carportDesignCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/PartListLine.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Backend/DBFacadeImpl.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Carport.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Backend/DBFacade.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Part.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Calculator/CalculatorFacadeImpl.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Calculator/CarportCalculator.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/CarportDUR.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/reviewCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Customer.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/test/Email/SendMailTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/carportTypeCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Order.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/test/Data/Backend/DataAccessObjectTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Email/SendMail.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/PartList.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/StringUtil.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/CarportHR.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Shed.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Calculator/CalculatorFacade.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/CommandException.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Backend/DataAccessObject.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/test/Data/Calculator/CarportCalculatorTest.java</file>
+>>>>>>> refs/remotes/origin/master
         </group>
     </open-files>
 </project-private>
