@@ -201,6 +201,219 @@ public PartList calculateDURNoShed(ArrayList<Part> list, CarportHR cp){
         
     
 }
+public PartList calculateDURWithShed(ArrayList<Part> list, CarportHR cp){
+    //Creates an ArrayList with parts
+        ArrayList<Part> parts = list;
+        
+        //Calculates the size of the roof
+        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getCarportWidth());
+
+        ArrayList<PartListLine> plll = new ArrayList<PartListLine>();
+        
+        PartListLine pll = null;
+        
+        //Calculates the count of parts in our PartList
+        //Creates partListList for line 1 
+        //Description: "25x150 mm. trykimp"
+        //Length: 360
+        //Usage: Vindskeder på rejsning
+        
+            pll = new PartListLine(parts.get(0),4);
+        
+        
+        //Creates partListList for line 2
+        //Description: 25x200 mm. trykimp. Brædt 
+        //Length: 540
+        //Usage: understernbrædder til siderne
+            
+            pll = new PartListLine(parts.get(1),4);
+        
+            
+        //Creates partListList for line 3
+        //Description: 25x125mm. trykimp. Brædt
+        //Length: 360
+        //Usage:  oversternbrædder til forenden
+   
+            pll = new PartListLine(parts.get(2),2);
+        
+            
+        //Creates partListList for line 4
+        //Description: 25x125mm. trykimp. Brædt
+        //Length: 540
+        //Usage:  oversternbrædder til siderne
+
+             pll = new PartListLine(parts.get(3),4);
+        
+        //Creates partListList for line 5
+        //Description: 38x73 mm. Lægte ubh.
+        //Length: 420
+        //Usage:    til z på bagside af dør 
+
+            pll = new PartListLine(parts.get(4),1);
+           
+        
+        //Creates partListList for line 6
+        //Description: 45x95 mm. Reglar ub.
+        //Length: 270
+        //Usage:    løsholter til skur gavle 
+
+            pll = new PartListLine(parts.get(5),12);
+             
+        //Creates partListList for line 7
+        //Description: 45x95 mm. Reglar ub.
+        //Length: 240
+        //Usage:    løsholter til skur sider
+
+             pll = new PartListLine(parts.get(6),4);
+             
+             
+        //Creates partListList for line 8
+        //Description: 45x195 mm. spærtræ ubh.
+        //Length: 600
+        //Usage:     Remme i sider, sadles ned i stolper
+             
+              pll = new PartListLine(parts.get(7),2);
+              
+        //Creates partListList for line 9
+        //Description: 45x195 mm. spærtræ ubh.
+        //Length: 480
+        //Usage:    Remme i sider, sadles ned i stolper ( skur del, deles)
+
+              pll = new PartListLine(parts.get(8),1);
+             
+        //Creates partListList for line 10
+        //Description: 45x195 mm. spærtræ ubh. 
+        //Length: 600
+        //Usage:      Spær, monteres på rem 
+        
+              pll = new PartListLine(parts.get(9),15);
+              
+        //Creates partListList for line 11
+        //Description: 97x97 mm. trykimp. Stolpe
+        //Length: 300
+        //Usage: Stolper nedgraves 90 cm. i jord
+
+              pll = new PartListLine(parts.get(10),11);
+              
+        //Creates partListList for line 12
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 210
+        //Usage:        til beklædning af skur 1 på 2 
+  
+              pll = new PartListLine(parts.get(11),200);
+        
+        //Creates partListList for line 13
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 540   
+        //Usage:      vandbrædt på stern i sider
+
+            pll = new PartListLine(parts.get(12),4);
+        
+        //Creates partListList for line 14
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 360
+        //Usage: vandbrædt på stern i forende
+
+            pll = new PartListLine(parts.get(13),2);
+        
+        //Creates partListList for line 15
+        //Description: Plastmo Ecolite blåtonet
+        //Length: 600
+        //Usage:     tagplader monteres på spær 
+
+            pll = new PartListLine(parts.get(14),6);
+        
+        //Creates partListList for line 16
+        //Description: Plastmo Ecolite blåtonet
+        //Length: 360
+        //Usage:     tagplader monteres på spær     
+            
+            pll = new PartListLine(parts.get(15),6);
+        
+        //Creates partListList for line 17
+        //Description: plastmo bundskruer 200 stk.
+        //Usage: Skruer til tagplader
+
+            pll = new PartListLine(parts.get(16),3);
+            
+        //Creates partListList for line 18
+        //Description: hulbånd 1x20 mm. 10 mtr.
+        //Usage:    Til vindkryds på spær
+ 
+            pll = new PartListLine(parts.get(17),2);
+        
+        //Creates partListList for line 19
+        //Description: universal 190 mm højre
+        //Usage:     Til montering af spær på rem
+
+            pll = new PartListLine(parts.get(18),15);
+        
+        //Creates partListList for line 20
+        //Description: universal 190 mm vesntre
+        //Usage:     Til montering af spær på rem
+
+            pll = new PartListLine(parts.get(19),15);    
+         
+        //Creates partListList for line 21
+        //Description: 4,5 x 60 mm. skruer 200 stk.
+        //Usage:     Til montering af stern&vandbrædt
+        
+            pll = new PartListLine(parts.get(20),1);  
+        
+        //Creates partListList for line 22
+        //Description: 4,0 x 50 mm. beslagskruer 250 stk.
+        //Usage: Til montering af universalbeslag + hulbånd
+ 
+            pll = new PartListLine(parts.get(21),3);
+            
+        //Creates partListList for line 23
+        //Description:  bræddebolt 10 x 120 mm. 
+        //Usage: Til montering af rem på stolper
+
+            pll = new PartListLine(parts.get(22),18);
+            
+        //Creates partListList for line 24
+        //Description: firkantskiver 40x40x11mm
+        //Usage: Til montering af rem på stolper
+
+            pll = new PartListLine(parts.get(23),12);
+            
+        //Creates partListList for line 25
+        //Description: 4,5 x 70 mm. Skruer 400 stk.
+        //Usage: til montering af yderste beklædning
+
+            pll = new PartListLine(parts.get(24),2);
+        
+        //Creates partListList for line 26
+        //Description: 4,5 x 50 mm. Skruer 300 stk.
+        //Usage: til montering af yderste beklædning
+
+            pll = new PartListLine(parts.get(25),2);    
+            
+        //Creates partListList for line 27
+        //Description: stalddørsgreb 50x75
+        //Usage:   Til lås på dør i skur
+
+            pll = new PartListLine(parts.get(26),1);  
+        
+        //Creates partListList for line 28
+        //Description: t hængsel 390 mm
+        //Usage:    Til skurdør
+        
+            pll = new PartListLine(parts.get(27),2);  
+        
+        //Creates partListList for line 29
+        //Description: vinkelbeslag 35
+        //Usage:    Til montering af løsholter i skur
+        
+            pll = new PartListLine(parts.get(28),32);  
+        
+        double price = calculatePrice(plll);
+        PartList partList = new PartList(plll,price);
+        return partList;
+        
+    
+}
 public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp){
     
         
