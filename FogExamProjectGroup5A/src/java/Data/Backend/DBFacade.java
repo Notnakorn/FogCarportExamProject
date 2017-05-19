@@ -1,6 +1,7 @@
 
 package Data.Backend;
 
+import Data.BusinessLogic.Order;
 import Data.BusinessLogic.Part;
 import java.util.ArrayList;
 
@@ -17,12 +18,13 @@ import java.util.ArrayList;
 
 
 public interface DBFacade {
-    public Part getPartHR (int pno);
-    public Part getPartDUR (int pno);
-    public int getPartCountHR (int l, int h);
-    public int getPartCountDUR (int l, int h);
+//    public Part getPartHR (int pno);
+//    public Part getPartDUR (int pno);
+//    public int getPartCountHR (int l, int h);
+//    public int getPartCountDUR (int l, int h);
     public ArrayList<Part> getPartListHR();
     public ArrayList<Part> getPartListDUR();
     public void createCustomer(String cName, String cNumber, String cEmail, String cAdress);
-    public void createOrder();
+    public void createOrder(String cEmail, String oDetails);
+    public void createReview(int reviewScore);
 }

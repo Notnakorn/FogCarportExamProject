@@ -1,5 +1,6 @@
 package Data.Backend;
 
+import Data.BusinessLogic.Order;
 import Data.BusinessLogic.Part;
 import java.util.ArrayList;
 
@@ -20,21 +21,21 @@ public class DBFacadeImpl implements DBFacade {
         this.dao = new DataAccessObject();
     }
     
-    public Part getPartHR(int pno) {
-        return dao.getPartHR(pno);
-     }
-    
-    public Part getPartDUR(int pno) {
-        return dao.getPartHR(pno);
-     }
-    
-    public int getPartCountHR(int l, int h){
-        return dao.getPartCountHR(l, h);
-    }
-    
-    public int getPartCountDUR(int l, int h){
-        return dao.getPartCountHR(l, h);
-    }
+//    public Part getPartHR(int pno) {
+//        return dao.getPartHR(pno);
+//     }
+//    
+//    public Part getPartDUR(int pno) {
+//        return dao.getPartHR(pno);
+//     }
+//    
+//    public int getPartCountHR(int l, int h){
+//        return dao.getPartCountHR(l, h);
+//    }
+//    
+//    public int getPartCountDUR(int l, int h){
+//        return dao.getPartCountHR(l, h);
+//    }
     
     public ArrayList<Part> getPartListHR(){
         return dao.getPartListHR();
@@ -48,8 +49,12 @@ public class DBFacadeImpl implements DBFacade {
         dao.createCustomer(cName, cNumber, cEmail, cAdress);
     }
     
-    public void createOrder(){
-        
+    public void createOrder(String cEmail, String oDetails){
+        dao.createOrder(cEmail, oDetails);
     }
     
+    public void createReview(int reviewScore){
+        dao.createReview(reviewScore);
+    }
+            
 }
