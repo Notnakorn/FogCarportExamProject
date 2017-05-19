@@ -29,7 +29,6 @@ class reviewCommand implements Command{
         String r = (String) request.getParameter("smiley");
         review = Integer.parseInt(r);
 
-        
         return next;
     }
     
