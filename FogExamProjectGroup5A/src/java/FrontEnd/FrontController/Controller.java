@@ -25,7 +25,7 @@ public class Controller {
     
     public void setup() throws Exception{
        
-         cf = new CalculatorFacadeImpl();
+        cf = new CalculatorFacadeImpl();
         dbf = new DBFacadeImpl();
         sm = new SendMail();
         
@@ -66,15 +66,15 @@ public class Controller {
         
         PartList partList = null;
        
-        if(cp.getShed() != null){
+//        if(cp.getShed() != null){
           partList = cf.calculateDURWithShed(parts, cp);
-        } else {
-          partList = cf.calculateDURNoShed(parts, cp);
-        };
+//        } else {
+//          partList = cf.calculateDURNoShed(parts, cp);
+//        };
         
-        sm.sendEmail(partList, c);
-        dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());
-        dbf.createOrder(c.getCustomerEmail(), partList.toString());
+//        sm.sendEmail(partList, c);
+//        dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());
+//        dbf.createOrder(c.getCustomerEmail(), partList.toString());
         
         
     }
