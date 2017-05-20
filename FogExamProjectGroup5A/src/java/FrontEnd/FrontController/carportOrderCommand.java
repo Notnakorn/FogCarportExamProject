@@ -4,6 +4,7 @@ package FrontEnd.FrontController;
 import FrontEnd.FrontController.CommandException;
 import Data.Backend.DBFacadeImpl;
 import Data.BusinessLogic.Carport;
+import Data.BusinessLogic.CarportDUR;
 import Data.BusinessLogic.CarportHR;
 import Data.BusinessLogic.Shed;
 import FrontEnd.FrontController.Command;
@@ -15,11 +16,11 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Kornh
  */
-class carportDesignCommand implements Command{
+class carportOrderCommand implements Command{
 
     private String next;
     
-    public carportDesignCommand(String jsp) {
+    public carportOrderCommand(String jsp) {
         next  = jsp;
     }
 
@@ -31,7 +32,7 @@ class carportDesignCommand implements Command{
         try {
             facade = new DBFacadeImpl();
         } catch (Exception ex) {
-            Logger.getLogger(carportDesignCommand.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -62,7 +63,10 @@ class carportDesignCommand implements Command{
 
         try{
             Shed sh = new Shed(shedWidth,shedLength);
+        if(angle > 0){
             Carport carportHR = new CarportHR(width,length,sh,angle);
+        }
+            Carport carportDUR = new CarportDUR(width,length,sh);
             
         }
         catch(IllegalArgumentException Ex){

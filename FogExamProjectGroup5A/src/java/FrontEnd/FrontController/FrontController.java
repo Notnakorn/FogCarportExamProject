@@ -85,7 +85,9 @@ public class FrontController extends HttpServlet {
         commands.put("customer-review", new reviewCommand("reviewDone.jsp"));
         commands.put("choose-carport-type", new carportTypeCommand("chooseCarportType.jsp"));
         commands.put("draw-carport", new drawCarportCommand("carportDesignFlatRoof3.jsp"));
-        commands.put("carport-design", new carportDesignCommand("customerReview.jsp"));
+        commands.put("add-carport", new addCarportCommand("orderCarport.jsp"));
+        commands.put("order-carport", new carportOrderCommand("customerReview.jsp"));
+       
        
     }
 

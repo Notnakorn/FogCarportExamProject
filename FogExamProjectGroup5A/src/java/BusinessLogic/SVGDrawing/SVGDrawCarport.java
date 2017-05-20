@@ -147,14 +147,14 @@ public class SVGDrawCarport {
             return res.toString();
     }
 
-    public double calculateRoofHeight(double width, double angle){
+    public double calculateRoofHeight(double width, int angle){
 
         double roofHeight = 0;
 
             if(angle > 0)
             {   
-                double topAngle = 90-angle;
-                double topRadians = Math.toRadians(topAngle);
+                int topAngle = 90-angle;
+                double topRadians = (double) Math.toRadians(topAngle);
                 double widthMiddle = width/2;
                 roofHeight = widthMiddle/(Math.tan(topRadians));
 

@@ -1,12 +1,10 @@
 <%-- 
-    Document   : carportDesignFlatRoof2
-    Created on : 16-05-2017, 13:10:42
+    Document   : carpportDesignPointyRoof
+    Created on : 05-05-2017, 12:45:27
     Author     : Kornh
 --%>
 
-
 <%@page import="BusinessLogic.SVGDrawing.SVGDrawCompleteCarport"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,36 +28,40 @@
                 <li><a href="http://207.154.197.214:8080/TheEnd/error.html">Error</a></li>
             </ul>
         
-        <h1>Her kan du designe din egen carport med Fladt Tag</h1>
+        <h1>Bekræft order!</h1>
         
         <p>
         
-        <form action="FrontController" method="GET">
-        <input type="number" placeholder="Carport-Længde" id="length" name="length" value="<%= request.getAttribute("length")%>">
-        <input type="number" placeholder="Carport-Bredde" id="width" name="width" value="<%= request.getAttribute("width")%>">
-        <input type="number" placeholder="Skur-Bredde" id="shedLength" name="shedLength" value="<%= request.getAttribute("shedLength")%>">
-        <input type="number" placeholder="Skur-Længde" id="shedWidth" name="shedWidth" value="<%= request.getAttribute("shedWidth")%>">
-        <input type="hidden" id="angle" name="angle" value="0">
-        <input type="hidden" id="height" name="height" value="210">
         
-        <input type="hidden" name="cmd" value="draw-carport">  
-        <input type="button" value="Check Measurements" onclick="checkCarportMeasurements();">
-        <input type="button" value="Download" onclick="downloadAll();"> 
-        <button onclick="checkCarportMeasurements();">Tegn Carport</button>
-        </form>
+
+        <form action= "FrontController" method="GET">
+        <button> Køb Carport </button>
         
-        <form>
-            <input type="hidden" name ="length" id = "length" value="<%= request.getAttribute("length")%>">
-            <input type="hidden" name ="width" id = "width" value="<%= request.getAttribute("width")%>">
-            <input type="hidden" name ="height" id = "height" value="<%= request.getAttribute("height")%>">
-            <input type="hidden" name ="shedLength" id = "shedLength" value="<%= request.getAttribute("shedLength")%>">
-            <input type="hidden" name ="shedWidth" id = "shedWidth" value="<%= request.getAttribute("shedWidth")%>">
-            <input type="hidden" name ="angle" id = "angle" value="<%= request.getAttribute("angle")%>">
-            <input type="hidden" name="cmd" value="add-carport">
-            <button>Send Forespørgsel til Fog</button>
-        </form>
+        <input type="hidden" name="cmd" value="order-carport">    
+            
+        <input type="text" placeholder="Navn" name="cName" id="cName" value="">
+        <input type="text" placeholder="Tlf.nr." name="cNumber" id="cNumber" value="">
+        <input type="text" placeholder="Email" name="cEmail" id="cEmail" value="">
+        <input type="text" placeholder="Adresse" name="cAdress" id="cAdress" value="">
         
-        <p>
+        <input type="hidden" name ="length" id = "length" value="<%= request.getAttribute("length")%>">
+        <input type="hidden" name ="width" id = "width" value="<%= request.getAttribute("width")%>">
+        <input type="hidden" name ="height" id = "height" value="<%= request.getAttribute("height")%>">
+        <input type="hidden" name ="shedLength" id = "shedLength" value="<%= request.getAttribute("shedLength")%>">
+        <input type="hidden" name ="shedWidth" id = "shedWidth" value="<%= request.getAttribute("shedWidth")%>">
+        <input type="hidden" name ="angle" id = "angle" value="<%= request.getAttribute("angle")%>">
+        
+        <h3> Du har valgt en Carport med følgende mål: </h3>
+        
+        <h4> Længde:     <%= request.getAttribute("length")%> </h4>
+        <h4> Bredde:     <%= request.getAttribute("width")%> </h4>
+        <h4> Højde:      <%= request.getAttribute("height")%> </h4>
+        <h4> Skurlængde: <%= request.getAttribute("shedLength")%> </h4>
+        <h4> Skurbredde: <%= request.getAttribute("shedWidth")%> </h4>
+        <h4> Tagvinkel:  <%= request.getAttribute("angle")%> </h4>
+        
+        <div3>
+        
         <% SVGDrawCompleteCarport SVGDrawCompleteCarport = new SVGDrawCompleteCarport(); %>
         <%= SVGDrawCompleteCarport.drawCompleteCarport(   
                                 
@@ -72,9 +74,21 @@
                                 (Integer) request.getAttribute("angle")
                                 
                         ) %>
+            
+        </div3>    
         
-               
-                        
+        
+
+        
+
+        </form>
+        
+
+        
+
+        
+        
         </p>
+
     </body>
 </html>
