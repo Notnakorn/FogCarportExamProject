@@ -25,12 +25,53 @@ public class Controller {
     
     public void setup() throws Exception{
        
-        cf = new CalculatorFacadeImpl();
+         cf = new CalculatorFacadeImpl();
         dbf = new DBFacadeImpl();
         sm = new SendMail();
         
      
     }
+    
+    public double getPriceHR(CarportHR cp) {
+        double price = 0;
+        
+        ArrayList<Part> parts = new ArrayList<Part>();
+        parts = dbf.getPartListHR();
+        
+        
+        PartList partList = null;
+       
+        if(cp.getShed() != null){
+          partList = cf.calculateHRWithShed(parts, cp);
+        } else {
+          partList = cf.calculateHRNoShed(parts, cp);
+        };
+        
+        price = partList.getPrice();
+        
+        return price;
+    }
+    
+    public double getPriceDUR(CarportDUR cp) {
+        double price = 0;
+        
+        ArrayList<Part> parts = new ArrayList<Part>();
+        parts = dbf.getPartListDUR();
+        
+        
+        PartList partList = null;
+       
+        if(cp.getShed() != null){
+          partList = cf.calculateDURWithShed(parts, cp);
+        } else {
+          partList = cf.calculateDURNoShed(parts, cp);
+        };
+        
+        price = partList.getPrice();
+        
+        return price;
+    }
+    
     public void runHR(CarportHR cp, Customer c) throws Exception{
         
         setup();
@@ -66,15 +107,15 @@ public class Controller {
         
         PartList partList = null;
        
-//        if(cp.getShed() != null){
+        if(cp.getShed() != null){
           partList = cf.calculateDURWithShed(parts, cp);
-//        } else {
-//          partList = cf.calculateDURNoShed(parts, cp);
-//        };
+        } else {
+          partList = cf.calculateDURNoShed(parts, cp);
+        };
         
-//        sm.sendEmail(partList, c);
-//        dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());
-//        dbf.createOrder(c.getCustomerEmail(), partList.toString());
+        sm.sendEmail(partList, c);
+        dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());
+        dbf.createOrder(c.getCustomerEmail(), partList.toString());
         
         
     }
