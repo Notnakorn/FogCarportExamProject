@@ -34,11 +34,6 @@
         
         <p>
         
-
-        <input type="hidden" name="cmd" value="carport-design">
-        <button>Send Forespørgsel til Fog</button>
-        </form>
-        
         <form action="FrontController" method="GET">
         <input type="number" placeholder="Carport-Længde" id="length" name="length" value="<%= request.getAttribute("length")%>">
         <input type="number" placeholder="Carport-Bredde" id="width" name="width" value="<%= request.getAttribute("width")%>">
@@ -49,7 +44,19 @@
         
         <input type="hidden" name="cmd" value="draw-carport">  
         <input type="button" value="Check Measurements" onclick="checkCarportMeasurements();">
-        <button onclick="return checkCarportMeasurements();">Lav Carport</button>
+        <input type="button" value="Download" onclick="downloadAll();"> 
+        <button onclick="checkCarportMeasurements();">Tegn Carport</button>
+        </form>
+        
+        <form>
+            <input type="hidden" name ="length" id = "length" value="<%= request.getAttribute("length")%>">
+            <input type="hidden" name ="width" id = "width" value="<%= request.getAttribute("width")%>">
+            <input type="hidden" name ="height" id = "height" value="<%= request.getAttribute("height")%>">
+            <input type="hidden" name ="shedLength" id = "shedLength" value="<%= request.getAttribute("shedLength")%>">
+            <input type="hidden" name ="shedWidth" id = "shedWidth" value="<%= request.getAttribute("shedWidth")%>">
+            <input type="hidden" name ="angle" id = "angle" value="<%= request.getAttribute("angle")%>">
+            <input type="hidden" name="cmd" value="add-carport">
+            <button>Send Forespørgsel til Fog</button>
         </form>
         
         <p>
@@ -62,11 +69,11 @@
                                 (Double) request.getAttribute("height"),
                                 (Double) request.getAttribute("shedLength"),
                                 (Double) request.getAttribute("shedWidth"),
-                                (Double) request.getAttribute("angle")
+                                (Integer) request.getAttribute("angle")
                                 
                         ) %>
         
-        <input type="button" value="Download" onclick="downloadAll();">                
+               
                         
         </p>
     </body>

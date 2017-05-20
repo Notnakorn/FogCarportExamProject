@@ -17,7 +17,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
     
     
     
-    public String drawCompleteCarport(double length, double width, double height, double shedLength, double shedWidth, double angle){
+    public String drawCompleteCarport(double length, double width, double height, double shedLength, double shedWidth, int angle){
         
        
         StringBuilder res = new StringBuilder();
@@ -35,7 +35,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
         return res.toString();
     }
     
-        public String drawCarportFromSide(double length, double width, double height, double shedLength, double angle){
+        public String drawCarportFromSide(double length, double width, double height, double shedLength, int angle){
 
             StringBuilder res = new StringBuilder();
             
@@ -59,7 +59,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
             return res.toString();
         }   
 
-        public String drawCarportFromFront(double width, double height, double shedWidth, double angle){
+        public String drawCarportFromFront(double width, double height, double shedWidth, int angle){
 
             StringBuilder res = new StringBuilder();
             
@@ -81,7 +81,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
             return res.toString();
         }   
 
-        public String drawCarportFromTop(double length, double width, double height, double shedLength, double shedWidth, double angle){
+        public String drawCarportFromTop(double length, double width, double height, double shedLength, double shedWidth, int angle){
 
             StringBuilder res = new StringBuilder();
             

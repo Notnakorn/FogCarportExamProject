@@ -51,15 +51,21 @@
         
         <input type="button" value="Check Measurements" onclick="checkCarportMeasurements();">
         <button onclick="checkCarportMeasurements();"> Lav Carport</button>
-        
-        <input type="hidden" name="cmd" value="draw-carport">
-        <button>Send Forespørgsel til Fog</button>
         <input type="button" value="Download" onclick="downloadAll();">
+        <input type="hidden" name="cmd" value="draw-carport">
+
         </form>
         
         <form>
-            <input type="hidden" name="cmd" value="carport-design">
-         </form>
+            <input type="hidden" name ="length" id = "length" value="<%= request.getAttribute("length")%>">
+            <input type="hidden" name ="width" id = "width" value="<%= request.getAttribute("width")%>">
+            <input type="hidden" name ="height" id = "height" value="<%= request.getAttribute("height")%>">
+            <input type="hidden" name ="shedLength" id = "shedLength" value="<%= request.getAttribute("shedLength")%>">
+            <input type="hidden" name ="shedWidth" id = "shedWidth" value="<%= request.getAttribute("shedWidth")%>">
+            <input type="hidden" name ="angle" id = "angle" value="<%= request.getAttribute("angle")%>">
+            <input type="hidden" name="cmd" value="add-carport">
+            <button>Send Forespørgsel til Fog</button>
+        </form>
         
         
         <% SVGDrawCompleteCarport SVGDrawCompleteCarport = new SVGDrawCompleteCarport(); %>
@@ -71,7 +77,7 @@
                                 (Double) request.getAttribute("height"),
                                 (Double) request.getAttribute("shedLength"),
                                 (Double) request.getAttribute("shedWidth"),
-                                (Double) request.getAttribute("angle")
+                                (Integer) request.getAttribute("angle")
                                 
                         ) %>
         

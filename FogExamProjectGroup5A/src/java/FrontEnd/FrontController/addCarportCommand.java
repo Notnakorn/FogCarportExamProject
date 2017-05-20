@@ -5,28 +5,28 @@
  */
 package FrontEnd.FrontController;
 
-
 import Data.Backend.DBFacadeImpl;
+import Data.BusinessLogic.Carport;
+import Data.BusinessLogic.CarportHR;
+import Data.BusinessLogic.CarportDUR;
+import Data.BusinessLogic.Shed;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Kornh
  */
-public class drawCarportCommand implements Command{
+public class addCarportCommand implements Command{
+       private String next;
     
-
-    private String next;
-    
-    public drawCarportCommand(String jsp) {
+    public addCarportCommand(String jsp) {
         next  = jsp;
     }
 
-    
-    @Override
+     
+ @Override
     public String execute(HttpServletRequest request) throws CommandException {
        
         DBFacadeImpl facade;
@@ -36,6 +36,8 @@ public class drawCarportCommand implements Command{
             Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
+        
                 
         //Width
         setAttribute("width", 800.0, request);
@@ -43,13 +45,43 @@ public class drawCarportCommand implements Command{
         setAttribute("height", 400.0, request);
         setAttribute("shedWidth", 400.0, request);
         setAttribute("shedLength", 400.0, request);
-        setIntAttribute("angle", 0, request);
+        setIntAttribute("angle", 0.0, request);
         
+        double width = 0;
+        double length = 0;
+        double shedWidth = 0;
+        double shedLength = 0;
         int angle = 0;
+        
+        try{
+        String w = (String) request.getParameter("width");
+        String l = (String) request.getParameter("length");
+        String sw = (String) request.getParameter("shedWidth");
+        String sl = (String) request.getParameter("shedLength");
         String a = (String) request.getParameter("angle");
+        
+        width = Double.parseDouble(w);
+        length = Double.parseDouble(l);
+        shedWidth = Double.parseDouble(sw);
+        shedLength = Double.parseDouble(sl);
         angle = Integer.parseInt(a);
+        }
+        catch(NumberFormatException Ex){
+            return "error.jsp";
+        }
+         
+        
+
+        try{
+            Shed sh = new Shed(shedWidth,shedLength);
         if(angle > 0){
-            return "carportDesignPointyRoof3.jsp";
+            Carport carportHR = new CarportHR(width,length,sh,angle);
+        }
+            Carport carportDUR = new CarportDUR(width,length,sh);
+            
+        }
+        catch(IllegalArgumentException Ex){
+            return "error.jsp";
         }
 //        
 //        
@@ -90,11 +122,15 @@ public class drawCarportCommand implements Command{
         }
 
     }
-    
+
+
+
+
+
     private void setAttribute(String name, Object defaultValue, HttpServletRequest request)
     {
         String strVal = request.getParameter(name);
-
+ 
         try
         {
             request.setAttribute(name, Double.parseDouble(strVal));
@@ -107,7 +143,7 @@ public class drawCarportCommand implements Command{
     private void setIntAttribute(String name, Object defaultValue, HttpServletRequest request)
     {
         String strVal = request.getParameter(name);
-
+ 
         try
         {
             request.setAttribute(name, Integer.parseInt(strVal));
@@ -120,4 +156,3 @@ public class drawCarportCommand implements Command{
     
     
 }
-

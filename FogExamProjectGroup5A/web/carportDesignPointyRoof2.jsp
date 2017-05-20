@@ -29,10 +29,7 @@
         
         <h1>Her kan du designe din egen carport med rejsning</h1>
         
-        <p>
-        
-        
-        <button>Send Forespørgsel til Fog</button>    
+        <p>  
         
         <form action= "FrontController" method="GET">
         <input type="number" placeholder="Carport-Længde" name="length" id="length" value="500">
@@ -53,10 +50,10 @@
         </select>
         
         <input type="button" value="Check Measurements" onclick="checkCarportMeasurements();">
-        <button onclick="checkCarportMeasurements();"> Lav Carport</button>
+        <button onclick="checkCarportMeasurements();"> Tegn Carport</button>
         
         <input type="hidden" name="cmd" value="draw-carport">
-        <button>Tegn Carport</button>
+
         </form>
         
 

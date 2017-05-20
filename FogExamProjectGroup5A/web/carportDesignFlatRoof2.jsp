@@ -42,7 +42,6 @@
         <input type="number" placeholder="Carport-Bredde" id="width" name="width" value="400">
         <input type="number" placeholder="Skur-Bredde" id="shedLength" name="shedLength" value="150">
         <input type="number" placeholder="Skur-Længde" id="shedWidth"name="shedWidth" value="350">
-
         <input type="hidden" id="height" name="height" value="210">
         <input type="hidden" id="angle" name="angle" value="0">
         
