@@ -14,7 +14,7 @@ public class Carport {
     
     private double carportLength;
     private double carportWidth;
-    private Shed shed;
+    private Shed shed = null;
     
     
     public Carport(double carportLength, double carportWidth, Shed sh) {

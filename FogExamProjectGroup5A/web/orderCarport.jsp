@@ -39,10 +39,10 @@
         
         <input type="hidden" name="cmd" value="order-carport">    
             
-        <input type="text" placeholder="Navn" name="cName" id="cName" value="">
-        <input type="text" placeholder="Tlf.nr." name="cNumber" id="cNumber" value="">
-        <input type="text" placeholder="Email" name="cEmail" id="cEmail" value="">
-        <input type="text" placeholder="Adresse" name="cAdress" id="cAdress" value="">
+        <input type="text" placeholder="Navn" name="cName" id="cName" value="Anton">
+        <input type="text" placeholder="Tlf.nr." name="cNumber" id="cNumber" value="1234">
+        <input type="text" placeholder="Email" name="cEmail" id="cEmail" value="Hejsa">
+        <input type="text" placeholder="Adresse" name="cAdress" id="cAdress" value="MedDigsa">
         
         <input type="hidden" name ="length" id = "length" value="<%= request.getAttribute("length")%>">
         <input type="hidden" name ="width" id = "width" value="<%= request.getAttribute("width")%>">
