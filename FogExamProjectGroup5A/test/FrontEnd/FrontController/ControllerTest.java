@@ -26,6 +26,7 @@ public class ControllerTest {
     
     Controller ctrl;
     CarportHR cpHR = new CarportHR(300,300,null,25);
+    CarportHR cpHR1 = new CarportHR(600,600,null,25);
     CarportDUR cpDUR = new CarportDUR(300,300,null);
     Customer c = new Customer("BenteBent","0000000","bent@bent.com","Bentevej 64");
 
@@ -50,7 +51,7 @@ public class ControllerTest {
      */
     @Test
     public void testGetPriceHR() throws Exception {
-        
+        System.out.println(ctrl.getPriceHR(cpHR1));
         assertTrue("will it fizz", ctrl.getPriceHR(cpHR) == 1299.0);
         
     }

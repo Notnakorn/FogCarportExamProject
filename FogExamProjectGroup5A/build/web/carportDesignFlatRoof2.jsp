@@ -51,14 +51,14 @@
 
         
         <form action="FrontController" method="GET">
-        <input type="number" placeholder="Carport-Længde" id="length" name="length" value="400">
-        <input type="number" placeholder="Carport-Bredde" id="width" name="width" value="400">
+        <input type="number" placeholder="Carport-Længde" id="length" name="length" value="">
+        <input type="number" placeholder="Carport-Bredde" id="width" name="width" value="">
 
         Med Skur:  <input type="radio" onclick="javascript:showShed();" checked="checked" name="shedChoice" id="withShed"/>
         Uden Skur: <input type="radio" onclick="javascript:showShed();" name="shedChoice" id="withoutShed"/>
         <div id="shed" style="display:block">
-        <input type="number" placeholder="Skur-Bredde" id="shedLength" name="shedLength" value="150">
-        <input type="number" placeholder="Skur-Længde" id="shedWidth"name="shedWidth" value="350">
+        <input type="number" placeholder="Skur-Bredde" id="shedLength" name="shedLength" value="">
+        <input type="number" placeholder="Skur-Længde" id="shedWidth"name="shedWidth" value="">
         </div>
         <input type="hidden" id="height" name="height" value="210">
         <input type="hidden" id="angle" name="angle" value="0">
