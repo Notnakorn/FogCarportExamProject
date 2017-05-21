@@ -39,12 +39,12 @@ public class CalculatorFacadeImpl implements CalculatorFacade {
 
     @Override
     public PartList calculateDURNoShed(ArrayList<Part> list, CarportDUR cp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cc.calculateDURNoShed(list, cp);
     }
 
     @Override
     public PartList calculateDURWithShed(ArrayList<Part> list, CarportDUR cp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cc.calculateDURWithShed(list, cp);
     }
 
     

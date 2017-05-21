@@ -72,7 +72,7 @@
         <input type="hidden" name="cmd" value="draw-carport">
 
         </form>
-        </div><br>
+        </div><br><br><br>
         
         <div>
         <form>
@@ -85,7 +85,7 @@
             <input type="hidden" name="cmd" value="add-carport">
             <button>Tilføj til kurv</button>
         </form>
-        </div><br>
+        </div><br><br><br>
         
         <% SVGDrawCompleteCarport SVGDrawCompleteCarport = new SVGDrawCompleteCarport(); %>
         <%= SVGDrawCompleteCarport.drawCompleteCarport(   
