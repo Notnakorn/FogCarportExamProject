@@ -37,7 +37,7 @@ public double calculatePrice(ArrayList<PartListLine> pll){
     double price = 0;
     
     for (int i = 0; i < pll.size(); i++) {
-        price  = price + pll.get(i).getPart().getPartPrice();
+        price  = price + (pll.get(i).getPart().getPartPrice()*pll.get(i).getCount());
     }
     
     return price;
