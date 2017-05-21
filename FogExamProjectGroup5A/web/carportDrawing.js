@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 
+        function showShed(){
+        
+        
+        if (document.getElementById('withShed').checked) {
+        document.getElementById('shed').style.display = 'block';
+        } else {
+            document.getElementById('shed').style.display = 'none';
+        var shedLength = document.getElementById("shedLength");
+        shedLength.setAttribute("value", "0");
+        var shedWidth = document.getElementById("shedWidth");
+        shedWidth.setAttribute("value", "0");
+        }    
+        }
 
         function selectAngle(){
         var angle = parseInt(document.getElementById("angle").value);
@@ -101,6 +114,10 @@
         }
         
 
+                
+        
+        
+        
         function getLength(){
         var length = parseFloat(document.getElementById("length").value);
         return length;

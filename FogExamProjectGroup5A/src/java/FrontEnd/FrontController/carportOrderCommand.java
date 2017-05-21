@@ -54,6 +54,13 @@ class carportOrderCommand implements Command{
         
         try{
             
+        setAttribute("width", 800.0, request);
+        setAttribute("length", 800.0, request);
+        setAttribute("height", 400.0, request);
+        setAttribute("shedWidth", 0.0, request);
+        setAttribute("shedLength", 0.0, request);
+        setIntAttribute("angle", 0.0, request);
+            
         cName = (String) request.getParameter("cName");
         cNumber = (String) request.getParameter("cNumber");
         cEmail = (String) request.getParameter("cEmail");
@@ -71,6 +78,7 @@ class carportOrderCommand implements Command{
         shedWidth = Double.parseDouble(sw);
         shedLength = Double.parseDouble(sl);
         angle = Integer.parseInt(a);
+        
         }
         catch(NumberFormatException Ex){
             return "error.jsp";
@@ -83,8 +91,18 @@ class carportOrderCommand implements Command{
         catch(IllegalArgumentException Ex){
             return "error.jsp";
         }
+        Shed sh = null;
         try{
-            Shed sh = new Shed(shedWidth,shedLength);
+            if(shedWidth == 0 || shedLength == 0){
+            }
+            else{
+            sh = new Shed(shedWidth,shedLength);    
+            }
+        }    
+        catch(IllegalArgumentException ex){
+            return "error.jsp";
+        }    
+        try{    
         if(angle > 0){
             CarportHR carportHR = new CarportHR(width,length,sh,angle);
             ctr.runHR(carportHR, c);
@@ -111,5 +129,31 @@ class carportOrderCommand implements Command{
         }
 
     }
+        private void setAttribute(String name, Object defaultValue, HttpServletRequest request)
+    {
+        String strVal = request.getParameter(name);
+ 
+        try
+        {
+            request.setAttribute(name, Double.parseDouble(strVal));
+        }
+        catch(NumberFormatException ex)
+        {
+            request.setAttribute(name, defaultValue);
+        }
+    }    
+    private void setIntAttribute(String name, Object defaultValue, HttpServletRequest request)
+    {
+        String strVal = request.getParameter(name);
+ 
+        try
+        {
+            request.setAttribute(name, Integer.parseInt(strVal));
+        }
+        catch(NumberFormatException ex)
+        {
+            request.setAttribute(name, defaultValue);
+        }
+    }   
     
 }

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class addCarportCommand implements Command{
        private String next;
-    
+       private Controller ctr;
     public addCarportCommand(String jsp) {
         next  = jsp;
     }
@@ -43,15 +43,17 @@ public class addCarportCommand implements Command{
         setAttribute("width", 800.0, request);
         setAttribute("length", 800.0, request);
         setAttribute("height", 400.0, request);
-        setAttribute("shedWidth", 400.0, request);
-        setAttribute("shedLength", 400.0, request);
+        setAttribute("shedWidth", 0.0, request);
+        setAttribute("shedLength", 0.0, request);
         setIntAttribute("angle", 0.0, request);
+        
         
         double width = 0;
         double length = 0;
         double shedWidth = 0;
         double shedLength = 0;
         int angle = 0;
+        double price = 0;
         
         try{
         String w = (String) request.getParameter("width");
@@ -65,20 +67,37 @@ public class addCarportCommand implements Command{
         shedWidth = Double.parseDouble(sw);
         shedLength = Double.parseDouble(sl);
         angle = Integer.parseInt(a);
+        
         }
+        
         catch(NumberFormatException Ex){
             return "error.jsp";
         }
          
         
 
+       
+        Shed sh = null;
         try{
-            Shed sh = new Shed(shedWidth,shedLength);
+            if(shedWidth == 0 || shedLength == 0){
+            }
+            else{
+            sh = new Shed(shedWidth,shedLength);    
+            }
+        }    
+        catch(IllegalArgumentException ex){
+            return "error.jsp";
+        }  
+        try{
         if(angle > 0){
-            Carport carportHR = new CarportHR(width,length,sh,angle);
+
+            CarportHR carportHR = new CarportHR(width,length,sh,angle);
+//            price = ctr.getPriceHR(carportHR);
         }
-            Carport carportDUR = new CarportDUR(width,length,sh);
-            
+        else{
+            CarportDUR carportDUR = new CarportDUR(width,length,sh);
+//            price = ctr.getPriceDUR(carportDUR);
+        }    
         }
         catch(IllegalArgumentException Ex){
             return "error.jsp";
