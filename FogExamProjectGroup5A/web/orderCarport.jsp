@@ -59,6 +59,7 @@
         <h4> Skurlængde: <%= request.getAttribute("shedLength")%> </h4>
         <h4> Skurbredde: <%= request.getAttribute("shedWidth")%> </h4>
         <h4> Tagvinkel:  <%= request.getAttribute("angle")%> </h4>
+        <h4> Pris:  <%= request.getAttribute("price")%> </h4>
         
         <div3>
         

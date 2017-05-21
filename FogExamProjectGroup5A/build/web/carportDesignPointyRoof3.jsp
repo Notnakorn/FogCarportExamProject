@@ -16,6 +16,7 @@
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="carportDrawing.js"></script>
    <link type="text/css" rel="stylesheet" href="CSS/FogCarportCSS.css" />
 </head>
 <body>
@@ -52,8 +53,14 @@
         <form action= "FrontController" method="GET">
         <input type="number" placeholder="Carport-Længde" name="length" id="length" value="<%= request.getAttribute("length")%>">
         <input type="number" placeholder="Carport-Bredde" name="width" id="width" value="<%= request.getAttribute("width")%>">
+        
+        Med Skur:  <input type="radio" onclick="javascript:showShed();" checked="checked" name="shedChoice" id="withShed"/>
+        Uden Skur: <input type="radio" onclick="javascript:showShed();" name="shedChoice" id="withoutShed"/>
+        
+        <div id="shed" style="display:block">
         <input type="number" placeholder="Skur-Bredde" name="shedLength" id="shedLength" value="<%= request.getAttribute("shedLength")%>">
         <input type="number" placeholder="Skur-Længde" name="shedWidth" id="shedWidth" value="<%= request.getAttribute("shedWidth")%>">
+        </div>
         <input type="hidden" name="height" id="height" value="210" >
         
         <select type="number" name="angle" id="angle" value="">
@@ -81,7 +88,8 @@
             <input type="hidden" name ="height" id = "height" value="<%= request.getAttribute("height")%>">
             <input type="hidden" name ="shedLength" id = "shedLength" value="<%= request.getAttribute("shedLength")%>">
             <input type="hidden" name ="shedWidth" id = "shedWidth" value="<%= request.getAttribute("shedWidth")%>">
-            <input type="hidden" name ="angle" id = "angle" value="<%= request.getAttribute("angle")%>">
+            <input type="hidden" name ="angle" id ="angle" value="<%= request.getAttribute("angle")%>">
+            <input type="hidden" name ="price" id ="price" value="">
             <input type="hidden" name="cmd" value="add-carport">
             <button>Tilføj til kurv</button>
         </form>

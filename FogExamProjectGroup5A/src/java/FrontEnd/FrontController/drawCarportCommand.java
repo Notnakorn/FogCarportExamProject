@@ -41,8 +41,8 @@ public class drawCarportCommand implements Command{
         setAttribute("width", 800.0, request);
         setAttribute("length", 800.0, request);
         setAttribute("height", 400.0, request);
-        setAttribute("shedWidth", 400.0, request);
-        setAttribute("shedLength", 400.0, request);
+        setAttribute("shedWidth", 0.0, request);
+        setAttribute("shedLength", 0.0, request);
         setIntAttribute("angle", 0, request);
         
         int angle = 0;

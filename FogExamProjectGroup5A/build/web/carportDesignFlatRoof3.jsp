@@ -18,6 +18,7 @@
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="carportDrawing.js"></script>
    <link type="text/css" rel="stylesheet" href="CSS/FogCarportCSS.css" />
 </head>
 <body>
@@ -57,8 +58,12 @@
         <form action="FrontController" method="GET">
         <input type="number" placeholder="Carport-Længde" id="length" name="length" value="<%= request.getAttribute("length")%>">
         <input type="number" placeholder="Carport-Bredde" id="width" name="width" value="<%= request.getAttribute("width")%>">
+        Med Skur:  <input type="radio" onclick="javascript:showShed();" checked="checked" name="shedChoice" id="withShed"/>
+        Uden Skur: <input type="radio" onclick="javascript:showShed();" name="shedChoice" id="withoutShed"/>
+        <div id="shed" style="display:block">
         <input type="number" placeholder="Skur-Bredde" id="shedLength" name="shedLength" value="<%= request.getAttribute("shedLength")%>">
         <input type="number" placeholder="Skur-Længde" id="shedWidth" name="shedWidth" value="<%= request.getAttribute("shedWidth")%>">
+        </div>
         <input type="hidden" id="angle" name="angle" value="0">
         <input type="hidden" id="height" name="height" value="210">
         
