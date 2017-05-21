@@ -82,6 +82,7 @@
             <input type="hidden" name ="shedLength" id = "shedLength" value="<%= request.getAttribute("shedLength")%>">
             <input type="hidden" name ="shedWidth" id = "shedWidth" value="<%= request.getAttribute("shedWidth")%>">
             <input type="hidden" name ="angle" id = "angle" value="<%= request.getAttribute("angle")%>">
+            <input type="hidden" name ="price" id = "price" value="1000">
             <input type="hidden" name="cmd" value="add-carport">
             <button>Tilføj til kurv</button>
         </form>

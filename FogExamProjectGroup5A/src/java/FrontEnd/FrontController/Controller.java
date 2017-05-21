@@ -32,8 +32,10 @@ public class Controller {
      
     }
     
-    public double getPriceHR(CarportHR cp) {
+    public double getPriceHR(CarportHR cp) throws Exception {
         double price = 0;
+        
+        setup();
         
         ArrayList<Part> parts = new ArrayList<Part>();
         parts = dbf.getPartListHR();
@@ -52,8 +54,10 @@ public class Controller {
         return price;
     }
     
-    public double getPriceDUR(CarportDUR cp) {
+    public double getPriceDUR(CarportDUR cp) throws Exception {
         double price = 0;
+        
+        setup();
         
         ArrayList<Part> parts = new ArrayList<Part>();
         parts = dbf.getPartListDUR();
@@ -125,4 +129,6 @@ public class Controller {
         
         dbf.createReview(reviewScore);
     }
+    
+    
 }

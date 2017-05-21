@@ -205,7 +205,7 @@ class DataAccessObject
             statement.execute();
             
             } catch (SQLException e) {
-            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+            System.out.println("Fail in DataAccessObject - create customer " + e.getMessage());
         }
 
     }
@@ -214,7 +214,7 @@ class DataAccessObject
     {
         
         String SQLString
-                = "insert into customerOrder "
+                = "insert into customerOrder (customer_Email,order_Details) "
                 + "values (?,?)";
         
         try (PreparedStatement statement = con.prepareStatement(SQLString)) {
@@ -224,7 +224,7 @@ class DataAccessObject
             statement.execute();
             
             } catch (SQLException e) {
-            System.out.println("Fail in DataAccessObject - getPart " + e.getMessage());
+            System.out.println("Fail in DataAccessObject - create order " + e.getMessage());
         }
 
     }
@@ -233,7 +233,7 @@ class DataAccessObject
     {
         
         String SQLString
-                = "insert into review "
+                = "insert into review (review_Score) "
                 + "values (?)";
         
         try (PreparedStatement statement = con.prepareStatement(SQLString)) {

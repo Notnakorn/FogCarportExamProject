@@ -20,7 +20,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class addCarportCommand implements Command{
        private String next;
-       private Controller ctr;
+       
+       Controller ctr;
     public addCarportCommand(String jsp) {
         next  = jsp;
     }
@@ -29,9 +30,9 @@ public class addCarportCommand implements Command{
  @Override
     public String execute(HttpServletRequest request) throws CommandException {
        
-        DBFacadeImpl facade;
+        
         try {
-            facade = new DBFacadeImpl();
+            ctr = new Controller();
         } catch (Exception ex) {
             Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,58 +93,31 @@ public class addCarportCommand implements Command{
         if(angle > 0){
 
             CarportHR carportHR = new CarportHR(width,length,sh,angle);
-//            price = ctr.getPriceHR(carportHR);
+            setPriceHRAttribute("price", 0.0, carportHR ,request);
+            price = ctr.getPriceHR(carportHR);
         }
+        
         else{
             CarportDUR carportDUR = new CarportDUR(width,length,sh);
-//            price = ctr.getPriceDUR(carportDUR);
-        }    
+            setPriceDURAttribute("price", 0.0, carportDUR, request);
+            price = ctr.getPriceDUR(carportDUR);
         }
-        catch(IllegalArgumentException Ex){
+        
+        }
+        catch (Exception ex) {
+            Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);
             return "error.jsp";
         }
-//        
-//        
-//   
-//        double width = 0;
-//        double length = 0;
-//        double shedWidth = 0;
-//        double shedLength = 0;
-//        double height = 0;
-//        int strokeWidth = 5;
-//        
-//        try{
-//        String w = (String) request.getParameter("width");
-//        String l = (String) request.getParameter("length");
-//        String h = (String) request.getParameter("height");
-//        String sw = (String) request.getParameter("shedWidth");
-//        String sl = (String) request.getParameter("shedLength");
-//        
-//        
-//     
-//        
-//        width = Double.parseDouble(w);
-//        length = Double.parseDouble(l);
-//        shedWidth = Double.parseDouble(sw);
-//        shedLength = Double.parseDouble(sl);
-//        height = Double.parseDouble(h);
-//        
-//        
-//        
-//        }
-//        catch(NullPointerException Ex){
-//            return "error.jsp";
-//        }
+
         
- 
+        
+        
         {
         return next;
         }
+        
 
     }
-
-
-
 
 
     private void setAttribute(String name, Object defaultValue, HttpServletRequest request)
@@ -159,6 +133,36 @@ public class addCarportCommand implements Command{
             request.setAttribute(name, defaultValue);
         }
     }    
+    private void setPriceHRAttribute(String name, Object defaultValue, CarportHR carportHR, HttpServletRequest request) throws Exception
+    {
+        double price = 0;
+        String strVal = request.getParameter(name);
+        
+        try
+        {
+            request.setAttribute(name, price = ctr.getPriceHR(carportHR));
+        }
+        catch(NumberFormatException ex)
+        {
+            request.setAttribute(name, defaultValue);
+        }
+    }    
+    
+    private void setPriceDURAttribute(String name, Object defaultValue, CarportDUR carportDUR, HttpServletRequest request) throws Exception
+    {
+        double price = 0;
+        String strVal = request.getParameter(name);
+ 
+        try
+        {
+            request.setAttribute(name, price = ctr.getPriceDUR(carportDUR));
+        }
+        catch(NumberFormatException ex)
+        {
+            request.setAttribute(name, defaultValue);
+        }
+    }    
+    
     private void setIntAttribute(String name, Object defaultValue, HttpServletRequest request)
     {
         String strVal = request.getParameter(name);
