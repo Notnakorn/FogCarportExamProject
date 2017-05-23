@@ -5,28 +5,20 @@
             <url>web/carportDesignFlatRoof3.jsp</url>
             <bookmark id="1">
                 <name/>
-                <line>74</line>
+                <line>79</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Carport.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/carportDrawing.js</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/carportTypeCommand.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignFlatRoof2.jsp</file>
+            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/test/FrontEnd/FrontController/ControllerTest.java</file>
+            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/Email/SendMail.java</file>
+            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignFlatRoof3.jsp</file>
             <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignPointyRoof3.jsp</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Customer.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/BusinessLogic/Shed.java</file>
             <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/Controller.java</file>
             <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/addCarportCommand.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/FrontController.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/Data/Calculator/CarportCalculator.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignFlatRoof3.jsp</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/carportOrderCommand.java</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignPointyRoof2.jsp</file>
-            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/FrontEnd/FrontController/drawCarportCommand.java</file>
+            <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/src/java/BusinessLogic/SVGDrawing/SVGDrawCarport.java</file>
             <file>file:/C:/Users/Kornh/Desktop/GithubProjekts/FogCarportExamProject/FogExamProjectGroup5A/web/orderCarport.jsp</file>
         </group>
     </open-files>

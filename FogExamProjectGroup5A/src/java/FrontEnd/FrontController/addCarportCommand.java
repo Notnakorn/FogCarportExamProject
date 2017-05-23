@@ -75,9 +75,7 @@ public class addCarportCommand implements Command{
             return "error.jsp";
         }
          
-        
 
-       
         Shed sh = null;
         try{
             if(shedWidth == 0 || shedLength == 0){
