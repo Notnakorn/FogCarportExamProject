@@ -11,7 +11,12 @@
       background-color: #004687;
       padding: 14px;
       color: #f2f2f2;
+      position:fixed;
+		bottom:0;
+		z-index:999999;
+                width: 100%;
     }
+
     
   .carousel-inner img {
       width: 100%; /* Set width to 100% */
