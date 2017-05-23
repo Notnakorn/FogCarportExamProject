@@ -21,13 +21,13 @@ public class Controller {
     
     CalculatorFacadeImpl cf;
     DBFacadeImpl dbf;
-    SendMail sm;
+//    SendMail sm;
     
     public void setup() throws Exception{
        
          cf = new CalculatorFacadeImpl();
         dbf = new DBFacadeImpl();
-        sm = new SendMail();
+//        sm = new SendMail();
         
      
     }
@@ -93,7 +93,7 @@ public class Controller {
           partList = cf.calculateHRNoShed(parts, cp);
         };
         
-        sm.sendEmail(partList, c);
+//        sm.sendEmail(partList, c);
         dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());
         dbf.createOrder(c.getCustomerEmail(), partList.toString());
         
@@ -117,7 +117,7 @@ public class Controller {
           partList = cf.calculateDURNoShed(parts, cp);
         };
         
-        sm.sendEmail(partList, c);
+//        sm.sendEmail(partList, c);
         dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());
         dbf.createOrder(c.getCustomerEmail(), partList.toString());
         
