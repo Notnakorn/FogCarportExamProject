@@ -60,7 +60,7 @@ public class CarportCalculatorTest {
     
      @Test
     public void calculateRoofHeight() {     
-        assertTrue("Calculator failed", cc.calculateRoofHeight(45, 420) == 296.98);
+        assertTrue("Calculator failed", cc.calculateRoofSideLength(45, 420) == 296.98);
     }
 
     
@@ -110,8 +110,8 @@ public class CarportCalculatorTest {
         Customer c = new Customer("test","test","test","test");
         
         pl = cc.calculateHRWittShed(list, cp);
-        String s = pl.toString();
-        assertTrue("Calculator failed",pl.getPrice() == 1836);        
+        System.out.println(pl.toString());
+        assertTrue("Calculator failed",pl.getPrice() == 48495.0);        
     }
 //    
 //    /**

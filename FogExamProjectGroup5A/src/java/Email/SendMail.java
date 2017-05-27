@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Email;
 import Data.BusinessLogic.Customer;
 import Data.BusinessLogic.PartList;
@@ -16,7 +12,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /*
-* Author Kasper inspiration from http://stackoverflow.com/questions/7970827/sending-mail-from-apache-tomcat
+* Author ron, implemented and rewritten by Kasper and Anton 
+http://stackoverflow.com/questions/7970827/sending-mail-from-apache-tomcat
 
 */
 public class SendMail {
