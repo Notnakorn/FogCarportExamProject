@@ -1,7 +1,7 @@
 <%-- 
     Document   : reviewDone
     Created on : 04-05-2017, 15:08:29
-    Author     : Kornh
+    Author     : @author Kasper and Anton
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,9 +31,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
-       <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Home</a></li>
+        <li><a href="http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Carporte</a></li>
         <li><a href="https://www.johannesfog.dk/byggecenter/om-fog/">About</a></li>
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.jsp">Carporte</a></li>
         <li><a href="https://johannesfog.dk/byggecenter/find-butik/">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -42,6 +41,7 @@
     </div>
   </div>
 </nav>
+    <div class="container-fluid text-center">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tak for besøget!</title>
@@ -54,11 +54,12 @@
         
 
     
-        
+    </div>
         <footer class="container-fluid text-center">
     <div class="pull-left">
     Johannes Fog A/S - Firskovvej 20 - 2800 Lyngby - CVR-nr. 16314439
 </div>
+           
 <div class="pull-right">
     Alle priser er inkl. moms
 </div>

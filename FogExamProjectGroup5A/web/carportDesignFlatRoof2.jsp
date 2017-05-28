@@ -1,7 +1,7 @@
 <%-- 
     Document   : carportDesignFlatRoof2
     Created on : 16-05-2017, 13:10:42
-    Author     : Kornh
+    Author     :  Kasper and Anton
 --%>
 
 
@@ -33,9 +33,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Home</a></li>
+        <li><a href="http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Carporte</a></li>
         <li><a href="https://www.johannesfog.dk/byggecenter/om-fog/">About</a></li>
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.jsp">Carporte</a></li>
         <li><a href="https://johannesfog.dk/byggecenter/find-butik/">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -57,14 +56,14 @@
         Med Skur:  <input type="radio" onclick="javascript:showShed();" checked="checked" name="shedChoice" id="withShed"/>
         Uden Skur: <input type="radio" onclick="javascript:showShed();" name="shedChoice" id="withoutShed"/>
         <div id="shed" style="display:block">
-        <input type="number" placeholder="Skur-Bredde" id="shedLength" name="shedLength" value="">
-        <input type="number" placeholder="Skur-Længde" id="shedWidth"name="shedWidth" value="">
+        <input type="number" placeholder="Skur-Længde" id="shedLength" name="shedLength" value="">
+        <input type="number" placeholder="Skur-Bredde" id="shedWidth"name="shedWidth" value="">
         </div>
         <input type="hidden" id="height" name="height" value="210">
         <input type="hidden" id="angle" name="angle" value="0">
         
         <input type="hidden" name="cmd" value="draw-carport">
-        <input type="button" value="Check Measurements" onclick="checkCarportMeasurements();">
+        <input type="button" value="Tjek Mål" onclick="checkCarportMeasurements();">
         <button onclick="checkCarportMeasurements();"> Lav Carport</button>
         </form>
         

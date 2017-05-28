@@ -7,7 +7,7 @@ package BusinessLogic.SVGDrawing;
 
 /**
  *
- * @author Kornh
+ * @author Kasper and Anton
  */
 public class SVGDrawCarport {
     
@@ -20,7 +20,8 @@ public class SVGDrawCarport {
             double middlePillarX = length*0.50;
             double backPillarX = length-3;
             StringBuilder res = new StringBuilder();
-
+            
+            
             //roof
             if(roofHeight > 0)
             {   
@@ -52,7 +53,8 @@ public class SVGDrawCarport {
 
 
             StringBuilder res = new StringBuilder();
-
+            
+           
             if(roofHeight > 0)
             {   
             double widthMiddle = width/2;
@@ -81,6 +83,7 @@ public class SVGDrawCarport {
             StringBuilder res = new StringBuilder();
 
     //        //surrounding square
+            
             res.append("<rect  x=\"0.0\" y=\"0.0\" width=\"").append(width).append("\" height=\"").append(length).append("\" fill=\"white\" stroke=\"black\" stroke-width=\"3\" borderleftwidth=\"0\"/>)");
 
             if(roofHeight > 0){

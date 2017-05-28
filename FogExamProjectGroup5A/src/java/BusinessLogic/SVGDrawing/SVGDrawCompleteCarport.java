@@ -7,7 +7,7 @@ package BusinessLogic.SVGDrawing;
 import  BusinessLogic.SVGDrawing.SVGDrawShed;
 /**
  *
- * @author Kornh
+ * @author Kasper and Anton
  */
 public class SVGDrawCompleteCarport {
     
@@ -43,6 +43,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
             
             height = height + roofHeight;
             
+            res.append("<p>Carport fra siden</p><br>");
             res.append("<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
                     + "id=\"carport1\" width=\"").append(length)
                     .append("\" height=\"").append(height)
@@ -67,6 +68,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
             
             height = height + roofHeight;
             
+             res.append("<p>Carport forfra</p><br>");
             res.append("<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
                     + "id=\"carport2\" width=\"").append(width)
                     .append("\" height=\"").append(height)
@@ -89,6 +91,7 @@ SVGDrawCarport dc = new SVGDrawCarport();
             
             height = height + roofHeight;
             
+            res.append("<p>Carport fra toppen</p><br>");
             res.append("<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" id=\"carport3\" width=\"").append(width).append("\" height=\"").append(length).append("\">\n");
 
             res.append(dc.drawCarportFromTop(length, width, roofHeight));

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SendMail.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FogExamProjectGroup5A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Email</a> &gt; <span class="el_source">SendMail.java</span></div><h1>SendMail.java</h1><pre class="source lang-java linenums">
+package Email;
+import Data.BusinessLogic.Customer;
+import Data.BusinessLogic.PartList;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+/*
+* Author ron, implemented and rewritten by Kasper and Anton 
+http://stackoverflow.com/questions/7970827/sending-mail-from-apache-tomcat
+
+*/
+<span class="fc" id="L19">public class SendMail {</span>
+
+    public void sendEmail(PartList pl, Customer c) {
+
+<span class="nc" id="L23">        final String username = &quot;testmailfog@gmail.com&quot;;</span>
+<span class="nc" id="L24">        final String password = &quot;fogtest1234&quot;;</span>
+
+<span class="nc" id="L26">        Properties props = new Properties();</span>
+<span class="nc" id="L27">        props.put(&quot;mail.smtp.auth&quot;, &quot;true&quot;);</span>
+<span class="nc" id="L28">        props.put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);</span>
+<span class="nc" id="L29">        props.put(&quot;mail.smtp.host&quot;, &quot;smtp.gmail.com&quot;);</span>
+<span class="nc" id="L30">        props.put(&quot;mail.smtp.port&quot;, &quot;587&quot;);</span>
+
+<span class="nc" id="L32">        Session session = Session.getInstance(props,</span>
+<span class="nc" id="L33">          new javax.mail.Authenticator() {</span>
+            protected PasswordAuthentication getPasswordAuthentication() {
+<span class="nc" id="L35">                return new PasswordAuthentication(username, password);</span>
+            }
+          });
+
+        try {
+
+<span class="nc" id="L41">            Message message = new MimeMessage(session);</span>
+<span class="nc" id="L42">            message.setFrom(new InternetAddress(&quot;testmailfog@gmail.com&quot;));</span>
+<span class="nc" id="L43">            message.setRecipients(Message.RecipientType.TO,</span>
+<span class="nc" id="L44">                InternetAddress.parse(&quot;testmailfog@gmail.com&quot;));</span>
+<span class="nc" id="L45">            message.setSubject(&quot;Bestilling fra &quot; + c.getCustomerName());</span>
+<span class="nc" id="L46">            message.setText(&quot;Bestilling fra kunde: &quot; + c.getCustomerName()</span>
+<span class="nc" id="L47">                    + &quot;\nKundes telefonnummber: &quot; + c.getCustomerPhoneNumber()</span>
+<span class="nc" id="L48">                    + &quot;\nKundes email: &quot; + c.getCustomerEmail()</span>
+<span class="nc" id="L49">                + &quot;\n\n&quot;+pl.toString()</span>
+<span class="nc" id="L50">                + &quot;\n\n Levering til: &quot; + c.getCustomerAdress());</span>
+
+<span class="nc" id="L52">            Transport.send(message);</span>
+
+<span class="nc" id="L54">            System.out.println(&quot;Done&quot;);</span>
+
+<span class="nc" id="L56">        } catch (MessagingException e) {</span>
+<span class="nc" id="L57">            throw new RuntimeException(e);</span>
+<span class="nc" id="L58">        }</span>
+<span class="nc" id="L59">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CarportCalculator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FogExamProjectGroup5A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Data.Calculator</a> &gt; <span class="el_source">CarportCalculator.java</span></div><h1>CarportCalculator.java</h1><pre class="source lang-java linenums">
+package Data.Calculator;
+
+import Data.BusinessLogic.CarportDUR;
+import Data.BusinessLogic.CarportHR;
+import Data.BusinessLogic.Part;
+import Data.BusinessLogic.PartList;
+import Data.BusinessLogic.PartListLine;
+import java.util.ArrayList;
+
+/**
+ * Holds our CarportCalculator
+ * Its a messy class, but it works. 
+ * We might spends more time later adding more business logic to this class. 
+ * 
+ * @author Kasper
+ */
+
+
+class CarportCalculator {
+
+<span class="fc" id="L22">    public CarportCalculator() {</span>
+<span class="fc" id="L23">    }</span>
+  
+
+public double calculateRoofSideLength(int carportRoofAngel, double carportWidth){
+<span class="fc" id="L27">    int roofTopAngel = 180 - (2*carportRoofAngel);</span>
+    
+<span class="fc" id="L29">    double a = (Math.cos(Math.toRadians(carportRoofAngel))*carportWidth)/Math.sin(Math.toRadians(roofTopAngel));</span>
+<span class="fc" id="L30">    double finalValue = Math.round( a * 100.0 ) / 100.0;</span>
+    
+<span class="fc" id="L32">    return finalValue;</span>
+}    
+
+public double calculateRoofHeight(int carportRoofAngel, double carportWidth){
+<span class="fc" id="L36">    int roofTopAngel = 180 - (2*carportRoofAngel);</span>
+    
+<span class="fc" id="L38">    double c = calculateRoofSideLength(carportRoofAngel,carportWidth);</span>
+    
+<span class="fc" id="L40">    double finalValue = (c*Math.sin(Math.toRadians(carportRoofAngel)))/Math.sin(Math.toRadians(roofTopAngel));</span>
+    
+<span class="fc" id="L42">    return finalValue;</span>
+}
+
+
+public double calculatePrice(ArrayList&lt;PartListLine&gt; pll){
+    
+<span class="fc" id="L48">    double price = 0;</span>
+    
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    for (int i = 0; i &lt; pll.size(); i++) {</span>
+<span class="fc" id="L51">        price  = price + (pll.get(i).getPart().getPartPrice()*pll.get(i).getCount());</span>
+    }
+    
+<span class="fc" id="L54">    return price;</span>
+}
+public PartList calculateDURNoShed(ArrayList&lt;Part&gt; list, CarportDUR cp){
+    //Creates an ArrayList with parts
+<span class="fc" id="L58">        ArrayList&lt;Part&gt; parts = list;</span>
+        
+
+<span class="fc" id="L61">        ArrayList&lt;PartListLine&gt; plll = new ArrayList&lt;PartListLine&gt;();</span>
+        
+<span class="fc" id="L63">        PartListLine pll = null;</span>
+        
+        //Calculates the count of parts in our PartList
+        //Creates partListList for line 1 
+        //Description: &quot;25x150 mm. trykimp&quot;
+        //Length: 360
+        //Usage: Vindskeder på rejsning
+        
+<span class="fc" id="L71">            pll = new PartListLine(parts.get(0),4);</span>
+<span class="fc" id="L72">            plll.add(pll);</span>
+        
+        
+        //Creates partListList for line 2
+        //Description: 25x200 mm. trykimp. Brædt 
+        //Length: 540
+        //Usage: understernbrædder til siderne
+            
+<span class="fc" id="L80">            pll = new PartListLine(parts.get(1),4);</span>
+<span class="fc" id="L81">            plll.add(pll);</span>
+        
+            
+        //Creates partListList for line 3
+        //Description: 25x125mm. trykimp. Brædt
+        //Length: 360
+        //Usage:  oversternbrædder til forenden
+   
+<span class="fc" id="L89">            pll = new PartListLine(parts.get(2),2);</span>
+<span class="fc" id="L90">            plll.add(pll);</span>
+        
+            
+        //Creates partListList for line 4
+        //Description: 25x125mm. trykimp. Brædt
+        //Length: 540
+        //Usage:  oversternbrædder til siderne
+
+<span class="fc" id="L98">             pll = new PartListLine(parts.get(3),4);</span>
+<span class="fc" id="L99">             plll.add(pll);</span>
+        
+             
+             
+        //Creates partListList for line 8
+        //Description: 45x195 mm. spærtræ ubh.
+        //Length: 600
+        //Usage:     Remme i sider, sadles ned i stolper
+             
+<span class="fc" id="L108">              pll = new PartListLine(parts.get(7),2);</span>
+<span class="fc" id="L109">              plll.add(pll);</span>
+             
+        //Creates partListList for line 10
+        //Description: 45x195 mm. spærtræ ubh. 
+        //Length: 600
+        //Usage:      Spær, monteres på rem 
+        
+<span class="fc" id="L116">              pll = new PartListLine(parts.get(9),15);</span>
+<span class="fc" id="L117">              plll.add(pll);</span>
+              
+        //Creates partListList for line 11
+        //Description: 97x97 mm. trykimp. Stolpe
+        //Length: 300
+        //Usage: Stolper nedgraves 90 cm. i jord
+
+<span class="fc" id="L124">              pll = new PartListLine(parts.get(10),11);</span>
+<span class="fc" id="L125">              plll.add(pll);</span>
+        
+        //Creates partListList for line 13
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 540   
+        //Usage:      vandbrædt på stern i sider
+
+<span class="fc" id="L132">            pll = new PartListLine(parts.get(12),4);</span>
+<span class="fc" id="L133">            plll.add(pll);</span>
+        
+        //Creates partListList for line 14
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 360
+        //Usage: vandbrædt på stern i forende
+
+<span class="fc" id="L140">            pll = new PartListLine(parts.get(13),2);</span>
+<span class="fc" id="L141">            plll.add(pll);</span>
+        
+        //Creates partListList for line 15
+        //Description: Plastmo Ecolite blåtonet
+        //Length: 600
+        //Usage:     tagplader monteres på spær 
+
+<span class="fc" id="L148">            pll = new PartListLine(parts.get(14),6);</span>
+<span class="fc" id="L149">            plll.add(pll);</span>
+        
+        //Creates partListList for line 16
+        //Description: Plastmo Ecolite blåtonet
+        //Length: 360
+        //Usage:     tagplader monteres på spær     
+            
+<span class="fc" id="L156">            pll = new PartListLine(parts.get(15),6);</span>
+<span class="fc" id="L157">            plll.add(pll);</span>
+        
+        //Creates partListList for line 17
+        //Description: plastmo bundskruer 200 stk.
+        //Usage: Skruer til tagplader
+
+<span class="fc" id="L163">            pll = new PartListLine(parts.get(16),3);</span>
+<span class="fc" id="L164">            plll.add(pll);</span>
+            
+        //Creates partListList for line 18
+        //Description: hulbånd 1x20 mm. 10 mtr.
+        //Usage:    Til vindkryds på spær
+ 
+<span class="fc" id="L170">            pll = new PartListLine(parts.get(17),2);</span>
+<span class="fc" id="L171">            plll.add(pll);</span>
+        
+        //Creates partListList for line 19
+        //Description: universal 190 mm højre
+        //Usage:     Til montering af spær på rem
+
+<span class="fc" id="L177">            pll = new PartListLine(parts.get(18),15);</span>
+<span class="fc" id="L178">            plll.add(pll);</span>
+        
+        //Creates partListList for line 20
+        //Description: universal 190 mm vesntre
+        //Usage:     Til montering af spær på rem
+
+<span class="fc" id="L184">            pll = new PartListLine(parts.get(19),15); </span>
+<span class="fc" id="L185">            plll.add(pll);</span>
+         
+        //Creates partListList for line 21
+        //Description: 4,5 x 60 mm. skruer 200 stk.
+        //Usage:     Til montering af stern&amp;vandbrædt
+        
+<span class="fc" id="L191">            pll = new PartListLine(parts.get(20),1);  </span>
+<span class="fc" id="L192">            plll.add(pll);</span>
+        
+        //Creates partListList for line 22
+        //Description: 4,0 x 50 mm. beslagskruer 250 stk.
+        //Usage: Til montering af universalbeslag + hulbånd
+ 
+<span class="fc" id="L198">            pll = new PartListLine(parts.get(21),3);</span>
+<span class="fc" id="L199">            plll.add(pll);</span>
+            
+        //Creates partListList for line 23
+        //Description:  bræddebolt 10 x 120 mm. 
+        //Usage: Til montering af rem på stolper
+
+<span class="fc" id="L205">            pll = new PartListLine(parts.get(22),18);</span>
+<span class="fc" id="L206">            plll.add(pll);</span>
+            
+        //Creates partListList for line 24
+        //Description: firkantskiver 40x40x11mm
+        //Usage: Til montering af rem på stolper
+
+<span class="fc" id="L212">            pll = new PartListLine(parts.get(23),12);</span>
+<span class="fc" id="L213">            plll.add(pll);</span>
+            
+        //Creates partListList for line 25
+        //Description: 4,5 x 70 mm. Skruer 400 stk.
+        //Usage: til montering af yderste beklædning
+
+<span class="fc" id="L219">            pll = new PartListLine(parts.get(24),2);</span>
+<span class="fc" id="L220">            plll.add(pll);</span>
+        
+        //Creates partListList for line 26
+        //Description: 4,5 x 50 mm. Skruer 300 stk.
+        //Usage: til montering af yderste beklædning
+
+<span class="fc" id="L226">            pll = new PartListLine(parts.get(25),2); </span>
+<span class="fc" id="L227">            plll.add(pll);</span>
+            
+<span class="fc" id="L229">        double price = calculatePrice(plll);</span>
+<span class="fc" id="L230">        PartList partList = new PartList(plll,price);</span>
+<span class="fc" id="L231">        return partList;</span>
+        
+    
+}
+public PartList calculateDURWithShed(ArrayList&lt;Part&gt; list, CarportDUR cp){
+    //Creates an ArrayList with parts
+<span class="fc" id="L237">        ArrayList&lt;Part&gt; parts = list;</span>
+
+<span class="fc" id="L239">        ArrayList&lt;PartListLine&gt; plll = new ArrayList&lt;PartListLine&gt;();</span>
+        
+<span class="fc" id="L241">        PartListLine pll = null;</span>
+        
+        //Calculates the count of parts in our PartList
+        //Creates partListList for line 1 
+        //Description: &quot;25x150 mm. trykimp&quot;
+        //Length: 360
+        //Usage: Vindskeder på rejsning
+        
+<span class="fc" id="L249">            pll = new PartListLine(parts.get(0),4);</span>
+<span class="fc" id="L250">            plll.add(pll);</span>
+        
+        //Creates partListList for line 2
+        //Description: 25x200 mm. trykimp. Brædt 
+        //Length: 540
+        //Usage: understernbrædder til siderne
+            
+<span class="fc" id="L257">            pll = new PartListLine(parts.get(1),4);</span>
+<span class="fc" id="L258">            plll.add(pll);</span>
+            
+        //Creates partListList for line 3
+        //Description: 25x125mm. trykimp. Brædt
+        //Length: 360
+        //Usage:  oversternbrædder til forenden
+   
+<span class="fc" id="L265">            pll = new PartListLine(parts.get(2),2);</span>
+<span class="fc" id="L266">            plll.add(pll);</span>
+            
+        //Creates partListList for line 4
+        //Description: 25x125mm. trykimp. Brædt
+        //Length: 540
+        //Usage:  oversternbrædder til siderne
+
+<span class="fc" id="L273">             pll = new PartListLine(parts.get(3),4);</span>
+<span class="fc" id="L274">             plll.add(pll);</span>
+        //Creates partListList for line 5
+        //Description: 38x73 mm. Lægte ubh.
+        //Length: 420
+        //Usage:    til z på bagside af dør 
+
+<span class="fc" id="L280">            pll = new PartListLine(parts.get(4),1);</span>
+<span class="fc" id="L281">           plll.add(pll);</span>
+        
+        //Creates partListList for line 6
+        //Description: 45x95 mm. Reglar ub.
+        //Length: 270
+        //Usage:    løsholter til skur gavle 
+
+<span class="fc" id="L288">            pll = new PartListLine(parts.get(5),12);</span>
+<span class="fc" id="L289">            plll.add(pll); </span>
+            
+        //Creates partListList for line 7
+        //Description: 45x95 mm. Reglar ub.
+        //Length: 240
+        //Usage:    løsholter til skur sider
+
+<span class="fc" id="L296">             pll = new PartListLine(parts.get(6),4);</span>
+<span class="fc" id="L297">             plll.add(pll);</span>
+             
+        //Creates partListList for line 8
+        //Description: 45x195 mm. spærtræ ubh.
+        //Length: 600
+        //Usage:     Remme i sider, sadles ned i stolper
+             
+<span class="fc" id="L304">              pll = new PartListLine(parts.get(7),2);</span>
+<span class="fc" id="L305">              plll.add(pll);</span>
+              
+        //Creates partListList for line 9
+        //Description: 45x195 mm. spærtræ ubh.
+        //Length: 480
+        //Usage:    Remme i sider, sadles ned i stolper ( skur del, deles)
+
+<span class="fc" id="L312">              pll = new PartListLine(parts.get(8),1);</span>
+<span class="fc" id="L313">             plll.add(pll);</span>
+              
+        //Creates partListList for line 10
+        //Description: 45x195 mm. spærtræ ubh. 
+        //Length: 600
+        //Usage:      Spær, monteres på rem 
+        
+<span class="fc" id="L320">              pll = new PartListLine(parts.get(9),15);</span>
+<span class="fc" id="L321">              plll.add(pll);</span>
+              
+        //Creates partListList for line 11
+        //Description: 97x97 mm. trykimp. Stolpe
+        //Length: 300
+        //Usage: Stolper nedgraves 90 cm. i jord
+
+<span class="fc" id="L328">              pll = new PartListLine(parts.get(10),11);</span>
+<span class="fc" id="L329">              plll.add(pll);</span>
+              
+        //Creates partListList for line 12
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 210
+        //Usage:        til beklædning af skur 1 på 2 
+  
+<span class="fc" id="L336">              pll = new PartListLine(parts.get(11),200);</span>
+<span class="fc" id="L337">              plll.add(pll);</span>
+              
+        //Creates partListList for line 13
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 540   
+        //Usage:      vandbrædt på stern i sider
+
+<span class="fc" id="L344">            pll = new PartListLine(parts.get(12),4);</span>
+<span class="fc" id="L345">            plll.add(pll);</span>
+                
+        //Creates partListList for line 14
+        //Description: 19x100 mm. trykimp. Brædt  
+        //Length: 360
+        //Usage: vandbrædt på stern i forende
+
+<span class="fc" id="L352">            pll = new PartListLine(parts.get(13),2);</span>
+<span class="fc" id="L353">            plll.add(pll);</span>
+            
+        //Creates partListList for line 15
+        //Description: Plastmo Ecolite blåtonet
+        //Length: 600
+        //Usage:     tagplader monteres på spær 
+
+<span class="fc" id="L360">            pll = new PartListLine(parts.get(14),6);</span>
+<span class="fc" id="L361">            plll.add(pll);</span>
+            
+        //Creates partListList for line 16
+        //Description: Plastmo Ecolite blåtonet
+        //Length: 360
+        //Usage:     tagplader monteres på spær     
+            
+<span class="fc" id="L368">            pll = new PartListLine(parts.get(15),6);</span>
+<span class="fc" id="L369">            plll.add(pll);</span>
+            
+        //Creates partListList for line 17
+        //Description: plastmo bundskruer 200 stk.
+        //Usage: Skruer til tagplader
+
+<span class="fc" id="L375">            pll = new PartListLine(parts.get(16),3);</span>
+<span class="fc" id="L376">            plll.add(pll);</span>
+            
+        //Creates partListList for line 18
+        //Description: hulbånd 1x20 mm. 10 mtr.
+        //Usage:    Til vindkryds på spær
+ 
+<span class="fc" id="L382">            pll = new PartListLine(parts.get(17),2);</span>
+<span class="fc" id="L383">            plll.add(pll);</span>
+            
+        //Creates partListList for line 19
+        //Description: universal 190 mm højre
+        //Usage:     Til montering af spær på rem
+
+<span class="fc" id="L389">            pll = new PartListLine(parts.get(18),15);</span>
+<span class="fc" id="L390">        plll.add(pll);</span>
+            
+        //Creates partListList for line 20
+        //Description: universal 190 mm vesntre
+        //Usage:     Til montering af spær på rem
+
+<span class="fc" id="L396">            pll = new PartListLine(parts.get(19),15);    </span>
+<span class="fc" id="L397">         plll.add(pll);</span>
+            
+        //Creates partListList for line 21
+        //Description: 4,5 x 60 mm. skruer 200 stk.
+        //Usage:     Til montering af stern&amp;vandbrædt
+        
+<span class="fc" id="L403">            pll = new PartListLine(parts.get(20),1);  </span>
+<span class="fc" id="L404">        plll.add(pll);</span>
+        
+        //Creates partListList for line 22
+        //Description: 4,0 x 50 mm. beslagskruer 250 stk.
+        //Usage: Til montering af universalbeslag + hulbånd
+ 
+<span class="fc" id="L410">            pll = new PartListLine(parts.get(21),3);</span>
+<span class="fc" id="L411">        plll.add(pll);</span>
+            
+        //Creates partListList for line 23
+        //Description:  bræddebolt 10 x 120 mm. 
+        //Usage: Til montering af rem på stolper
+
+<span class="fc" id="L417">            pll = new PartListLine(parts.get(22),18);</span>
+<span class="fc" id="L418">            plll.add(pll);</span>
+            
+        //Creates partListList for line 24
+        //Description: firkantskiver 40x40x11mm
+        //Usage: Til montering af rem på stolper
+
+<span class="fc" id="L424">            pll = new PartListLine(parts.get(23),12);</span>
+<span class="fc" id="L425">            plll.add(pll);</span>
+            
+        //Creates partListList for line 25
+        //Description: 4,5 x 70 mm. Skruer 400 stk.
+        //Usage: til montering af yderste beklædning
+
+<span class="fc" id="L431">            pll = new PartListLine(parts.get(24),2);</span>
+<span class="fc" id="L432">        plll.add(pll);</span>
+            
+        //Creates partListList for line 26
+        //Description: 4,5 x 50 mm. Skruer 300 stk.
+        //Usage: til montering af yderste beklædning
+
+<span class="fc" id="L438">            pll = new PartListLine(parts.get(25),2);    </span>
+<span class="fc" id="L439">            plll.add(pll);</span>
+            
+        //Creates partListList for line 27
+        //Description: stalddørsgreb 50x75
+        //Usage:   Til lås på dør i skur
+
+<span class="fc" id="L445">            pll = new PartListLine(parts.get(26),1);  </span>
+<span class="fc" id="L446">        plll.add(pll);</span>
+        
+        //Creates partListList for line 28
+        //Description: t hængsel 390 mm
+        //Usage:    Til skurdør
+        
+<span class="fc" id="L452">            pll = new PartListLine(parts.get(27),2);  </span>
+<span class="fc" id="L453">        plll.add(pll);</span>
+            
+        //Creates partListList for line 29
+        //Description: vinkelbeslag 35
+        //Usage:    Til montering af løsholter i skur
+        
+<span class="fc" id="L459">            pll = new PartListLine(parts.get(28),32);  </span>
+<span class="fc" id="L460">        plll.add(pll);</span>
+        
+<span class="fc" id="L462">        double price = calculatePrice(plll);</span>
+<span class="fc" id="L463">        PartList partList = new PartList(plll,price);</span>
+<span class="fc" id="L464">        return partList;</span>
+        
+    
+}
+public PartList calculateHRNoShed(ArrayList&lt;Part&gt; list, CarportHR cp){
+    
+        
+    
+        //Creates an ArrayList with parts
+<span class="fc" id="L473">        ArrayList&lt;Part&gt; parts = list;</span>
+        
+        //Calculates the size of the roof
+<span class="fc" id="L476">        double carportRoofSideLength = calculateRoofSideLength(cp.getAngle(), cp.getAngle());</span>
+<span class="fc" id="L477">        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getAngle());</span>
+
+<span class="fc" id="L479">        ArrayList&lt;PartListLine&gt; plll = new ArrayList&lt;PartListLine&gt;();</span>
+        
+<span class="fc" id="L481">        PartListLine pll = null;</span>
+        
+        //Calculates the count of parts in our PartList
+        //Creates partListList for line 1 
+        //Description: &quot;25x150 mm. trykimp&quot;
+        //Length: 480
+        //Usage: Vindskeder på rejsning
+<span class="pc bpc" id="L488" title="1 of 2 branches missed.">        if (cp.getCarportWidth() &gt; 460){</span>
+<span class="nc" id="L489">            pll = new PartListLine(parts.get(0),2);</span>
+        } else {
+<span class="fc" id="L491">            pll = new PartListLine(parts.get(0),4);</span>
+        }
+<span class="fc" id="L493">        plll.add(pll);</span>
+        
+       
+        
+        //Creates partListList for line 2
+        //Description: &quot;25x150 mm. trykimp. Bræt&quot;
+        //Length: 600
+        //Usage: Sternbrædder til siderne Carport del
+<span class="fc" id="L501">        pll = new PartListLine(parts.get(1),2);</span>
+<span class="fc" id="L502">        plll.add(pll);</span>
+        
+        //Creates partListList for line 3
+        //Description: &quot;25x150 mm. trykimp. Bræt&quot;
+        //Length: 540
+        //Usage: Sternbrædder til siderne Skur del ( deles )
+<span class="pc bpc" id="L508" title="1 of 2 branches missed.">        if (cp.getCarportLength() &lt; 580.0){</span>
+            //Dont add anything
+        } else {
+<span class="nc" id="L511">            pll = new PartListLine(parts.get(2),1);</span>
+<span class="nc" id="L512">            plll.add(pll);</span>
+        }
+        
+        
+        //Creates partListList for line  4
+        //Description: &quot;fædigskåret (byg-selv spær)&quot;
+        //Length: Undefined
+        //Usage: byg-selv spær (skal samles) 8 stk.
+<span class="fc" id="L520">        pll = new PartListLine(parts.get(3),2);</span>
+<span class="fc" id="L521">        plll.add(pll);</span>
+        
+        //Creates partListList for line  5
+        //Description: &quot;97x97 mm. trykimp. Stolpe&quot;
+        //Length: 300
+        //Usage: Stolper nedgraves 90 cm. i jord + skråstiver
+<span class="fc" id="L527">            pll = new PartListLine(parts.get(4),7);</span>
+       
+<span class="fc" id="L529">        plll.add(pll);</span>
+        
+        //Creates partListList for line  6
+        //Description: &quot;45x195 spærtræ ubh.&quot;
+        //Length: 480
+        //Usage: Remme i sider, sadles ned i stolper Carport del 
+<span class="fc" id="L535">        pll = new PartListLine(parts.get(5),2);</span>
+<span class="fc" id="L536">        plll.add(pll);</span>
+           
+        
+        //Creates partListList for line 10
+        //Description: &quot;19x100 mm. trykimp. Bræt &quot;
+        //Length: 480
+        //Usage: Vand bræt på vindskeder
+<span class="pc bpc" id="L543" title="1 of 2 branches missed.">        if (cp.getCarportWidth() &lt; 480.0){</span>
+<span class="fc" id="L544">            pll = new PartListLine(parts.get(9),2);</span>
+        } else {
+<span class="nc" id="L546">            pll = new PartListLine(parts.get(9),4);</span>
+        }
+<span class="fc" id="L548">        plll.add(pll);</span>
+        
+        //Creates partListList for line  11
+        //Description: &quot;19x100 mm. trykimp. Bræt  &quot;
+        //Length: 240
+        //Usage: beklædning af gavle 1 på 2 
+       
+           //Here we calculate the area of the gavl? to determinate,
+           //how many of this part we need. This is not a good way to do it...
+<span class="fc" id="L557">            double a = (Math.ceil((0.5*carportRoofHeight*cp.getCarportWidth())/355));</span>
+<span class="fc" id="L558">            int b = (int) Math.round(a);</span>
+<span class="fc" id="L559">            pll = new PartListLine(parts.get(10), b);   </span>
+            
+<span class="fc" id="L561">        plll.add(pll);</span>
+
+  
+        //Creates partListList for line 13 
+        //Description: &quot;25x50 mm. trykimp. Bræt&quot;
+        //Length: 540
+        //Usage: til montering oven på tagfodslægte
+<span class="fc" id="L568">        pll = new PartListLine(parts.get(12), 3);</span>
+<span class="fc" id="L569">        plll.add(pll);</span>
+        
+
+        //Creates partListList for line  15
+        //Description: &quot;38x73 mm. taglægte T1&quot;
+        //Length: 540
+        //Usage: til montering på spær, 7 rækker lægter på hver skiftevis 1 hel &amp; 1 halv lægte
+<span class="fc" id="L576">        pll = new PartListLine(parts.get(14), 21);</span>
+<span class="fc" id="L577">        plll.add(pll);</span>
+        
+        //Creates partListList for line  16
+        //Description: &quot;38x73 mm. taglægte T1&quot;
+        //Length: 420
+        //Usage: toplægte til montering af rygsten lægges i toplægte holder
+<span class="fc" id="L583">        pll = new PartListLine(parts.get(15), 2);</span>
+<span class="fc" id="L584">        plll.add(pll);</span>
+        
+        //Creates partListList for line  17
+        //Description: &quot;B &amp; C Dobbelt -s sort &quot;
+        //Usage: monteres på taglægter 6 rækker af 24 sten på hver side af taget
+        
+            //Calculates area of roof that needs to be covered in tegl
+            //Then devides those with the estimated area of tegl.
+            //We minus with 3 as the top 3 cm of the roof, dont need to be covered.
+<span class="fc" id="L593">            a = Math.ceil((((carportRoofSideLength-3)*cp.getCarportLength())*2)/94);</span>
+<span class="fc" id="L594">            b = (int) Math.round(a);</span>
+            
+<span class="fc" id="L596">        pll = new PartListLine(parts.get(16), b); </span>
+<span class="fc" id="L597">        plll.add(pll);</span>
+        
+        //Creates partListList for line  18
+        //Description: &quot;B &amp; C Rygsten sort &quot;
+        //Usage: monteres på toplægte med medfølgende beslag se tagstens vejledning
+        
+            //Calculates amount determined by length of carport.
+<span class="fc" id="L604">            a = Math.ceil((cp.getCarportLength())/35);</span>
+<span class="fc" id="L605">            b = (int) Math.round(a);</span>
+<span class="fc" id="L606">        pll = new PartListLine(parts.get(17), b); </span>
+<span class="fc" id="L607">        plll.add(pll);</span>
+        
+        //Creates partListList for line  19
+        //Description: &quot;B &amp; C Toplægte holder&quot;
+        //Usage: monteres på toppen af spæret (til toplægte)
+<span class="fc" id="L612">        pll = new PartListLine(parts.get(18), 8); </span>
+<span class="fc" id="L613">        plll.add(pll);</span>
+        
+        //Creates partListList for line  20
+        //Description: &quot;B &amp; C rygstensbeslag&quot;
+        //Usage: Til montering af rygsten
+             //Calculates amount determined by length of carport.
+<span class="fc" id="L619">            a = Math.ceil((cp.getCarportLength())/35);</span>
+<span class="fc" id="L620">            b = (int) Math.round(a);</span>
+<span class="fc" id="L621">        pll = new PartListLine(parts.get(19), b); </span>
+<span class="fc" id="L622">        plll.add(pll);</span>
+        
+        //Creates partListList for line  21
+        //Description: &quot;B &amp; C tagstens bindere &amp; nakkekroge&quot;
+        //Usage: til montering af tagsten, alle ydersten + hver anden fastgøres
+<span class="fc" id="L627">        pll = new PartListLine(parts.get(20), 2); </span>
+<span class="fc" id="L628">        plll.add(pll);</span>
+        
+        //Creates partListList for line  22
+        //Description: &quot;universal 190 mm højre&quot;
+        //Usage: Til montering af spær på rem
+<span class="fc" id="L633">        pll = new PartListLine(parts.get(21), 8); </span>
+<span class="fc" id="L634">        plll.add(pll);</span>
+        
+        //Creates partListList for line  23
+        //Description: &quot;universal 190 mm venstre&quot;
+        //Usage: Til montering af spær på rem
+<span class="fc" id="L639">        pll = new PartListLine(parts.get(22), 8); </span>
+<span class="fc" id="L640">        plll.add(pll);</span>
+        
+        //Creates partListList for line  24
+        //Description: &quot;Stalddørsgreb 50x75&quot;
+        //Usage:til dør i skur
+       
+        //Dont add anything
+        
+        
+        //Creates partListList for line  25
+        //Description: &quot;T-hængsel 390 mm.&quot;
+        //Usage: til dør i skur
+       
+        //Dont add anything
+        
+        
+        //Creates partListList for line  26
+        //Description: &quot;vinkelbeslag&quot;
+        //Usage: til montering af løsholter
+<span class="fc" id="L659">        pll = new PartListLine(parts.get(25), 20); </span>
+<span class="fc" id="L660">        plll.add(pll);</span>
+        
+        //Creates partListList for line  27
+        //Description: &quot;4,5 x 60 mm. Skruer 200 stk.&quot;
+        //Usage: Til montering af Stern, vindskeder, vindkryds &amp; vand bræt
+<span class="fc" id="L665">        pll = new PartListLine(parts.get(26), 1); </span>
+<span class="fc" id="L666">        plll.add(pll);</span>
+        
+        //Creates partListList for line  28
+        //Description: &quot;5,0 x 40 mm. beslagskruer 250 stk.&quot;
+        //Usage: Til montering af universalbeslag + toplægte
+<span class="fc" id="L671">        pll = new PartListLine(parts.get(27), 1); </span>
+<span class="fc" id="L672">        plll.add(pll);</span>
+                
+        //Creates partListList for line 29
+        //Description: &quot;5,0 x 100 mm. skruer 100 stk. &quot;
+        //Usage: til taglægter
+<span class="fc" id="L677">        pll = new PartListLine(parts.get(28), 2); </span>
+<span class="fc" id="L678">        plll.add(pll);</span>
+        
+        //Creates partListList for line 30
+        //Description: &quot; bræddebolt 10 x 120 mm.&quot;
+        //Usage: Til montering af rem på stolper
+<span class="fc" id="L683">        pll = new PartListLine(parts.get(29), 20); </span>
+<span class="fc" id="L684">        plll.add(pll);</span>
+        
+        //Creates partListList for line 31
+        //Description: &quot;firkantskiver 40x40x11mm&quot;
+        //Usage: Til montering af rem på stolper
+<span class="fc" id="L689">        pll = new PartListLine(parts.get(30), 20); </span>
+<span class="fc" id="L690">        plll.add(pll);</span>
+        
+        //Creates partListList for line 32
+        //Description: &quot;4,5 x 70 mm. Skruer 200 stk.&quot;
+        //Usage: til montering af yderste bræt ved beklædning
+<span class="fc" id="L695">        pll = new PartListLine(parts.get(31), 3); </span>
+<span class="fc" id="L696">        plll.add(pll);</span>
+        
+        //Creates partListList for line 33
+        //Description: &quot;4,5 x 50 mm. Skruer 350 stk.&quot;
+        //Usage: til montering af inderste bræt ved beklædning 
+<span class="fc" id="L701">        pll = new PartListLine(parts.get(32), 2); </span>
+<span class="fc" id="L702">        plll.add(pll);</span>
+        
+<span class="fc" id="L704">        double price = calculatePrice(plll);</span>
+<span class="fc" id="L705">        PartList partList = new PartList(plll,price);</span>
+<span class="fc" id="L706">        return partList;</span>
+}
+
+public PartList calculateHRWittShed (ArrayList&lt;Part&gt; list, CarportHR cp){
+   
+       //Creates an ArrayList with parts
+<span class="fc" id="L712">        ArrayList&lt;Part&gt; parts = list;</span>
+        
+        //Calculates the size of the roof
+<span class="fc" id="L715">        double carportRoofSideLength = calculateRoofSideLength(cp.getAngle(), cp.getAngle());</span>
+<span class="fc" id="L716">        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getAngle());</span>
+
+<span class="fc" id="L718">        ArrayList&lt;PartListLine&gt; plll = new ArrayList&lt;PartListLine&gt;();</span>
+        
+<span class="fc" id="L720">        PartListLine pll = null;</span>
+   
+        //Calculates the count of parts in our PartList
+        //Creates partListList for line 1 
+        //Description: &quot;25x150 mm. trykimp&quot;
+        //Length: 480
+        //Usage: Vindskeder på rejsning
+<span class="pc bpc" id="L727" title="1 of 2 branches missed.">        if (cp.getCarportWidth() &gt; 460){</span>
+<span class="nc" id="L728">            pll = new PartListLine(parts.get(0),2);</span>
+        } else {
+<span class="fc" id="L730">            pll = new PartListLine(parts.get(0),4);</span>
+        }
+<span class="fc" id="L732">        plll.add(pll);</span>
+        
+       
+        
+        //Creates partListList for line 2
+        //Description: &quot;25x150 mm. trykimp. Bræt&quot;
+        //Length: 600
+        //Usage: Sternbrædder til siderne Carport del
+<span class="fc" id="L740">        pll = new PartListLine(parts.get(1),2);</span>
+<span class="fc" id="L741">        plll.add(pll);</span>
+        
+        //Creates partListList for line 3
+        //Description: &quot;25x150 mm. trykimp. Bræt&quot;
+        //Length: 540
+        //Usage: Sternbrædder til siderne Skur del ( deles )
+<span class="pc bpc" id="L747" title="1 of 2 branches missed.">        if (cp.getCarportLength() &lt; 580.0){</span>
+<span class="fc" id="L748">            pll = new PartListLine(parts.get(2),0);</span>
+        } else {
+<span class="nc" id="L750">            pll = new PartListLine(parts.get(2),1);</span>
+        }
+<span class="fc" id="L752">        plll.add(pll);</span>
+        
+        //Creates partListList for line  4
+        //Description: &quot;fædigskåret (byg-selv spær)&quot;
+        //Length: Undefined
+        //Usage: byg-selv spær (skal samles) 8 stk.
+<span class="fc" id="L758">        pll = new PartListLine(parts.get(3),2);</span>
+<span class="fc" id="L759">        plll.add(pll);</span>
+        
+        //Creates partListList for line  5
+        //Description: &quot;97x97 mm. trykimp. Stolpe&quot;
+        //Length: 300
+        //Usage: Stolper nedgraves 90 cm. i jord + skråstiver
+       
+<span class="fc" id="L766">            pll = new PartListLine(parts.get(4),9);</span>
+
+<span class="fc" id="L768">        plll.add(pll);</span>
+        
+        //Creates partListList for line  6
+        //Description: &quot;45x195 spærtræ ubh.&quot;
+        //Length: 480
+        //Usage: Remme i sider, sadles ned i stolper Carport del 
+<span class="fc" id="L774">        pll = new PartListLine(parts.get(5),2);</span>
+<span class="fc" id="L775">        plll.add(pll);</span>
+        
+        //Creates partListList for line  7
+        //Description: &quot;45x195 spærtræ ubh.&quot;
+        //Length: 480
+        //Usage: Remme i sider, sadles ned i stolper Skur del
+        
+<span class="fc" id="L782">            pll = new PartListLine(parts.get(6),1);</span>
+       
+<span class="fc" id="L784">        plll.add(pll);</span>
+        
+        //Creates partListList for line 8
+        //Description: &quot;45x95 Reglar ubh.&quot;
+        //Length: 240
+        //Usage: Løsholter i siderne af skur
+<span class="pc bpc" id="L790" title="1 of 2 branches missed.">        if (cp.getShed().getShedLength() &gt; 220){</span>
+<span class="fc" id="L791">            pll = new PartListLine(parts.get(7),8);</span>
+        }else {
+<span class="nc" id="L793">            pll = new PartListLine(parts.get(7),4);      </span>
+        } 
+<span class="fc" id="L795">        plll.add(pll);</span>
+        
+        //Creates partListList for line  9
+        //Description: &quot;45x95 Reglar ubh.&quot;
+        //Length: 360
+        //Usage: Løsholter i gavle af skur
+<span class="pc bpc" id="L801" title="1 of 2 branches missed.">        if (cp.getShed().getShedWidth() &gt; 360){</span>
+<span class="nc" id="L802">            pll = new PartListLine(parts.get(8),12);</span>
+        }else {
+<span class="fc" id="L804">            pll = new PartListLine(parts.get(8),6);      </span>
+        } 
+<span class="fc" id="L806">        plll.add(pll);</span>
+        
+        //Creates partListList for line 10
+        //Description: &quot;19x100 mm. trykimp. Bræt &quot;
+        //Length: 480
+        //Usage: Vand bræt på vindskeder
+<span class="pc bpc" id="L812" title="1 of 2 branches missed.">        if (cp.getCarportWidth() &lt; 480.0){</span>
+<span class="fc" id="L813">            pll = new PartListLine(parts.get(9),2);</span>
+        } else {
+<span class="nc" id="L815">            pll = new PartListLine(parts.get(9),4);</span>
+        }
+<span class="fc" id="L817">        plll.add(pll);</span>
+        
+        //Creates partListList for line  11
+        //Description: &quot;19x100 mm. trykimp. Bræt  &quot;
+        //Length: 240
+        //Usage: beklædning af gavle 1 på 2 
+       
+           //Here we calculate the area of the gavl? to determinate,
+           //how many of this part we need. This is not a good way to do it...
+<span class="fc" id="L826">            double a = (Math.ceil((0.5*carportRoofHeight*cp.getCarportWidth())/355));</span>
+<span class="fc" id="L827">            int b = (int) Math.round(a);</span>
+<span class="fc" id="L828">            pll = new PartListLine(parts.get(10), b);   </span>
+            
+<span class="fc" id="L830">        plll.add(pll);</span>
+
+        //Creates partListList for line  12
+        //Description: &quot;19x100 mm. trykimp. Bræt  &quot;
+        //Length: 210
+        //Usage: Beklædning af skur 1 på 2 
+       
+<span class="fc" id="L837">            a = Math.ceil((cp.getShed().getShedLength()*2+cp.getShed().getShedWidth()*2)/7.3);</span>
+<span class="fc" id="L838">            b = (int) Math.round(a);</span>
+<span class="fc" id="L839">            pll = new PartListLine(parts.get(11), b); </span>
+        
+<span class="fc" id="L841">        plll.add(pll);</span>
+         
+        //Creates partListList for line 13 
+        //Description: &quot;25x50 mm. trykimp. Bræt&quot;
+        //Length: 540
+        //Usage: til montering oven på tagfodslægte
+<span class="fc" id="L847">        pll = new PartListLine(parts.get(12), 3);</span>
+<span class="fc" id="L848">        plll.add(pll);</span>
+        
+        //Creates partListList for line 14
+        //Description: &quot;38x73 mm. taglægte T1&quot;
+        //Length: 540   
+        //Usage: til z på bagside af dør
+        
+<span class="fc" id="L855">            pll = new PartListLine(parts.get(13), 1);</span>
+        
+<span class="fc" id="L857">        plll.add(pll);</span>
+       
+        //Creates partListList for line  15
+        //Description: &quot;38x73 mm. taglægte T1&quot;
+        //Length: 540
+        //Usage: til montering på spær, 7 rækker lægter på hver skiftevis 1 hel &amp; 1 halv lægte
+<span class="fc" id="L863">        pll = new PartListLine(parts.get(14), 21);</span>
+<span class="fc" id="L864">        plll.add(pll);</span>
+        
+        //Creates partListList for line  16
+        //Description: &quot;38x73 mm. taglægte T1&quot;
+        //Length: 420
+        //Usage: toplægte til montering af rygsten lægges i toplægte holder
+<span class="fc" id="L870">        pll = new PartListLine(parts.get(15), 2);</span>
+<span class="fc" id="L871">        plll.add(pll);</span>
+        
+        //Creates partListList for line  17
+        //Description: &quot;B &amp; C Dobbelt -s sort &quot;
+        //Usage: monteres på taglægter 6 rækker af 24 sten på hver side af taget
+            //Calculates area of roof that needs to be covered in tegl
+            //Then devides those with the estimated area of tegl.
+            //We minus with 3 as the top 3 cm of the roof, dont need to be covered.
+<span class="fc" id="L879">            a = Math.ceil((((carportRoofSideLength-3)*cp.getCarportLength())*2)/94);</span>
+<span class="fc" id="L880">            b = (int) Math.round(a);</span>
+<span class="fc" id="L881">        pll = new PartListLine(parts.get(16), b); </span>
+<span class="fc" id="L882">        plll.add(pll);</span>
+        
+        //Creates partListList for line  18
+        //Description: &quot;B &amp; C Rygsten sort &quot;
+        //Usage: monteres på toplægte med medfølgende beslag se tagstens vejledning
+             //Calculates amount determined by length of carport.
+<span class="fc" id="L888">            a = Math.ceil((cp.getCarportLength())/35);</span>
+<span class="fc" id="L889">            b = (int) Math.round(a);</span>
+<span class="fc" id="L890">        pll = new PartListLine(parts.get(17), b); </span>
+<span class="fc" id="L891">        plll.add(pll);</span>
+        
+        //Creates partListList for line  19
+        //Description: &quot;B &amp; C Toplægte holder&quot;
+        //Usage: monteres på toppen af spæret (til toplægte)
+<span class="fc" id="L896">        pll = new PartListLine(parts.get(18), 8); </span>
+<span class="fc" id="L897">        plll.add(pll);</span>
+        
+        //Creates partListList for line  20
+        //Description: &quot;B &amp; C rygstensbeslag&quot;
+        //Usage: Til montering af rygsten
+             //Calculates amount determined by length of carport.
+<span class="fc" id="L903">            a = Math.ceil((cp.getCarportLength())/35);</span>
+<span class="fc" id="L904">            b = (int) Math.round(a);</span>
+<span class="fc" id="L905">        pll = new PartListLine(parts.get(19), b); </span>
+<span class="fc" id="L906">        plll.add(pll);</span>
+        
+        //Creates partListList for line  21
+        //Description: &quot;B &amp; C tagstens bindere &amp; nakkekroge&quot;
+        //Usage: til montering af tagsten, alle ydersten + hver anden fastgøres
+<span class="fc" id="L911">        pll = new PartListLine(parts.get(20), 2); </span>
+<span class="fc" id="L912">        plll.add(pll);</span>
+        
+        //Creates partListList for line  22
+        //Description: &quot;universal 190 mm højre&quot;
+        //Usage: Til montering af spær på rem
+<span class="fc" id="L917">        pll = new PartListLine(parts.get(21), 8); </span>
+<span class="fc" id="L918">        plll.add(pll);</span>
+        
+        //Creates partListList for line  23
+        //Description: &quot;universal 190 mm venstre&quot;
+        //Usage: Til montering af spær på rem
+<span class="fc" id="L923">        pll = new PartListLine(parts.get(22), 8); </span>
+<span class="fc" id="L924">        plll.add(pll);</span>
+        
+        //Creates partListList for line  24
+        //Description: &quot;Stalddørsgreb 50x75&quot;
+        //Usage:til dør i skur
+       
+<span class="fc" id="L930">            pll = new PartListLine(parts.get(23), 1);</span>
+        
+<span class="fc" id="L932">        plll.add(pll);</span>
+        
+        //Creates partListList for line  25
+        //Description: &quot;T-hængsel 390 mm.&quot;
+        //Usage: til dør i skur
+        
+<span class="fc" id="L938">            pll = new PartListLine(parts.get(24), 1);</span>
+       
+<span class="fc" id="L940">        plll.add(pll);</span>
+        
+        //Creates partListList for line  26
+        //Description: &quot;vinkelbeslag&quot;
+        //Usage: til montering af løsholter
+<span class="fc" id="L945">        pll = new PartListLine(parts.get(25), 20); </span>
+<span class="fc" id="L946">        plll.add(pll);</span>
+        
+        //Creates partListList for line  27
+        //Description: &quot;4,5 x 60 mm. Skruer 200 stk.&quot;
+        //Usage: Til montering af Stern, vindskeder, vindkryds &amp; vand bræt
+<span class="fc" id="L951">        pll = new PartListLine(parts.get(26), 1); </span>
+<span class="fc" id="L952">        plll.add(pll);</span>
+        
+        //Creates partListList for line  28
+        //Description: &quot;5,0 x 40 mm. beslagskruer 250 stk.&quot;
+        //Usage: Til montering af universalbeslag + toplægte
+<span class="fc" id="L957">        pll = new PartListLine(parts.get(27), 1); </span>
+<span class="fc" id="L958">        plll.add(pll);</span>
+                
+        //Creates partListList for line 29
+        //Description: &quot;5,0 x 100 mm. skruer 100 stk. &quot;
+        //Usage: til taglægter
+<span class="fc" id="L963">        pll = new PartListLine(parts.get(28), 2); </span>
+<span class="fc" id="L964">        plll.add(pll);</span>
+        
+        //Creates partListList for line 30
+        //Description: &quot; bræddebolt 10 x 120 mm.&quot;
+        //Usage: Til montering af rem på stolper
+<span class="fc" id="L969">        pll = new PartListLine(parts.get(29), 20); </span>
+<span class="fc" id="L970">        plll.add(pll);</span>
+        
+        //Creates partListList for line 31
+        //Description: &quot;firkantskiver 40x40x11mm&quot;
+        //Usage: Til montering af rem på stolper
+<span class="fc" id="L975">        pll = new PartListLine(parts.get(30), 20); </span>
+<span class="fc" id="L976">        plll.add(pll);</span>
+        
+        //Creates partListList for line 32
+        //Description: &quot;4,5 x 70 mm. Skruer 200 stk.&quot;
+        //Usage: til montering af yderste bræt ved beklædning
+<span class="fc" id="L981">        pll = new PartListLine(parts.get(31), 3); </span>
+<span class="fc" id="L982">        plll.add(pll);</span>
+        
+        //Creates partListList for line 33
+        //Description: &quot;4,5 x 50 mm. Skruer 350 stk.&quot;
+        //Usage: til montering af inderste bræt ved beklædning 
+<span class="fc" id="L987">        pll = new PartListLine(parts.get(32), 2); </span>
+<span class="fc" id="L988">        plll.add(pll);</span>
+        
+        
+<span class="fc" id="L991">        double price = calculatePrice(plll);</span>
+<span class="fc" id="L992">        PartList partList = new PartList(plll,price);</span>
+<span class="fc" id="L993">        return partList;</span>
+}
+
+
+
+
+
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

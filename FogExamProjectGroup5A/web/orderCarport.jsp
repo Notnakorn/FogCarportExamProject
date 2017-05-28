@@ -1,7 +1,7 @@
 <%-- 
     Document   : carpportDesignPointyRoof
     Created on : 05-05-2017, 12:45:27
-    Author     : Kornh
+    Author     : @author Kasper and Anton
 --%>
 <%@page import="BusinessLogic.SVGDrawing.SVGDrawCompleteCarport"%>
 <%@page import="BusinessLogic.SVGDrawing.SVGDrawCompleteCarport"%>
@@ -32,9 +32,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Home</a></li>
+         <li><a href="http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Carporte</a></li>
         <li><a href="https://www.johannesfog.dk/byggecenter/om-fog/">About</a></li>
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.jsp">Carporte</a></li>
         <li><a href="https://johannesfog.dk/byggecenter/find-butik/">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -43,8 +42,8 @@
     </div>
   </div>
 </nav>
-        
-        <h1>Bekræft order!</h1>
+    <div class="container-fluid text-center">
+        <h1>Bekræft ordre!</h1>
         
         <p>
         
@@ -55,10 +54,10 @@
         
         <input type="hidden" name="cmd" value="order-carport">    
             
-        <input type="text" placeholder="Navn" name="cName" id="cName" value="Anton">
-        <input type="text" placeholder="Tlf.nr." name="cNumber" id="cNumber" value="1234">
-        <input type="text" placeholder="Email" name="cEmail" id="cEmail" value="Hejsa">
-        <input type="text" placeholder="Adresse" name="cAdress" id="cAdress" value="MedDigsa">
+        <input type="text" placeholder="Navn" name="cName" id="cName" value="">
+        <input type="text" placeholder="Tlf.nr." name="cNumber" id="cNumber" value="">
+        <input type="text" placeholder="Email" name="cEmail" id="cEmail" value="">
+        <input type="text" placeholder="Adresse" name="cAdress" id="cAdress" value="">
         
         <input type="hidden" name ="length" id = "length" value="<%= request.getAttribute("length")%>">
         <input type="hidden" name ="width" id = "width" value="<%= request.getAttribute("width")%>">
@@ -106,7 +105,7 @@
         
         
         </p>
-
+</div>
         <footer class="container-fluid text-center">
   <div class="pull-left">
     Johannes Fog A/S - Firskovvej 20 - 2800 Lyngby - CVR-nr. 16314439
