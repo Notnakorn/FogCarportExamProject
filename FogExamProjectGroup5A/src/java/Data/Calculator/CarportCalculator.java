@@ -23,7 +23,7 @@ class CarportCalculator {
     }
   
 
-public double calculateRoofHeight(int carportRoofAngel, double carportWidth){
+public double calculateRoofSideLength(int carportRoofAngel, double carportWidth){
     int roofTopAngel = 180 - (2*carportRoofAngel);
     
     double a = (Math.cos(Math.toRadians(carportRoofAngel))*carportWidth)/Math.sin(Math.toRadians(roofTopAngel));
@@ -31,6 +31,17 @@ public double calculateRoofHeight(int carportRoofAngel, double carportWidth){
     
     return finalValue;
 }    
+
+public double calculateRoofHeight(int carportRoofAngel, double carportWidth){
+    int roofTopAngel = 180 - (2*carportRoofAngel);
+    
+    double c = calculateRoofSideLength(carportRoofAngel,carportWidth);
+    
+    double finalValue = (c*Math.sin(Math.toRadians(carportRoofAngel)))/Math.sin(Math.toRadians(roofTopAngel));
+    
+    return finalValue;
+}
+
 
 public double calculatePrice(ArrayList<PartListLine> pll){
     
@@ -462,7 +473,8 @@ public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp){
         ArrayList<Part> parts = list;
         
         //Calculates the size of the roof
-        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getCarportWidth());
+        double carportRoofSideLength = calculateRoofSideLength(cp.getAngle(), cp.getAngle());
+        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getAngle());
 
         ArrayList<PartListLine> plll = new ArrayList<PartListLine>();
         
@@ -540,6 +552,8 @@ public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp){
         //Length: 240
         //Usage: beklædning af gavle 1 på 2 
        
+           //Here we calculate the area of the gavl? to determinate,
+           //how many of this part we need. This is not a good way to do it...
             double a = (Math.ceil((0.5*carportRoofHeight*cp.getCarportWidth())/355));
             int b = (int) Math.round(a);
             pll = new PartListLine(parts.get(10), b);   
@@ -572,15 +586,22 @@ public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp){
         //Creates partListList for line  17
         //Description: "B & C Dobbelt -s sort "
         //Usage: monteres på taglægter 6 rækker af 24 sten på hver side af taget
-            a = Math.ceil(((Math.sqrt(((carportRoofHeight*carportRoofHeight)+((0.5*cp.getCarportWidth())*(0.5*cp.getCarportWidth())))-3)*cp.getCarportLength())*2)/936);
+        
+            //Calculates area of roof that needs to be covered in tegl
+            //Then devides those with the estimated area of tegl.
+            //We minus with 3 as the top 3 cm of the roof, dont need to be covered.
+            a = Math.ceil((((carportRoofSideLength-3)*cp.getCarportLength())*2)/94);
             b = (int) Math.round(a);
+            
         pll = new PartListLine(parts.get(16), b); 
         plll.add(pll);
         
         //Creates partListList for line  18
         //Description: "B & C Rygsten sort "
         //Usage: monteres på toplægte med medfølgende beslag se tagstens vejledning
-            a = Math.ceil((cp.getCarportWidth()*cp.getCarportLength())/864);
+        
+            //Calculates amount determined by length of carport.
+            a = Math.ceil((cp.getCarportLength())/35);
             b = (int) Math.round(a);
         pll = new PartListLine(parts.get(17), b); 
         plll.add(pll);
@@ -594,7 +615,8 @@ public PartList calculateHRNoShed(ArrayList<Part> list, CarportHR cp){
         //Creates partListList for line  20
         //Description: "B & C rygstensbeslag"
         //Usage: Til montering af rygsten
-            a = Math.ceil((cp.getCarportWidth()*cp.getCarportLength())/864);
+             //Calculates amount determined by length of carport.
+            a = Math.ceil((cp.getCarportLength())/35);
             b = (int) Math.round(a);
         pll = new PartListLine(parts.get(19), b); 
         plll.add(pll);
@@ -690,7 +712,8 @@ public PartList calculateHRWittShed (ArrayList<Part> list, CarportHR cp){
         ArrayList<Part> parts = list;
         
         //Calculates the size of the roof
-        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getCarportWidth());
+        double carportRoofSideLength = calculateRoofSideLength(cp.getAngle(), cp.getAngle());
+        double carportRoofHeight = calculateRoofHeight(cp.getAngle(), cp.getAngle());
 
         ArrayList<PartListLine> plll = new ArrayList<PartListLine>();
         
@@ -798,6 +821,8 @@ public PartList calculateHRWittShed (ArrayList<Part> list, CarportHR cp){
         //Length: 240
         //Usage: beklædning af gavle 1 på 2 
        
+           //Here we calculate the area of the gavl? to determinate,
+           //how many of this part we need. This is not a good way to do it...
             double a = (Math.ceil((0.5*carportRoofHeight*cp.getCarportWidth())/355));
             int b = (int) Math.round(a);
             pll = new PartListLine(parts.get(10), b);   
@@ -848,7 +873,10 @@ public PartList calculateHRWittShed (ArrayList<Part> list, CarportHR cp){
         //Creates partListList for line  17
         //Description: "B & C Dobbelt -s sort "
         //Usage: monteres på taglægter 6 rækker af 24 sten på hver side af taget
-            a = Math.ceil(((Math.sqrt(((carportRoofHeight*carportRoofHeight)+((0.5*cp.getCarportWidth())*(0.5*cp.getCarportWidth())))-3)*cp.getCarportLength())*2)/936);
+            //Calculates area of roof that needs to be covered in tegl
+            //Then devides those with the estimated area of tegl.
+            //We minus with 3 as the top 3 cm of the roof, dont need to be covered.
+            a = Math.ceil((((carportRoofSideLength-3)*cp.getCarportLength())*2)/94);
             b = (int) Math.round(a);
         pll = new PartListLine(parts.get(16), b); 
         plll.add(pll);
@@ -856,7 +884,8 @@ public PartList calculateHRWittShed (ArrayList<Part> list, CarportHR cp){
         //Creates partListList for line  18
         //Description: "B & C Rygsten sort "
         //Usage: monteres på toplægte med medfølgende beslag se tagstens vejledning
-            a = Math.ceil((cp.getCarportWidth()*cp.getCarportLength())/864);
+             //Calculates amount determined by length of carport.
+            a = Math.ceil((cp.getCarportLength())/35);
             b = (int) Math.round(a);
         pll = new PartListLine(parts.get(17), b); 
         plll.add(pll);
@@ -870,7 +899,8 @@ public PartList calculateHRWittShed (ArrayList<Part> list, CarportHR cp){
         //Creates partListList for line  20
         //Description: "B & C rygstensbeslag"
         //Usage: Til montering af rygsten
-            a = Math.ceil((cp.getCarportWidth()*cp.getCarportLength())/864);
+             //Calculates amount determined by length of carport.
+            a = Math.ceil((cp.getCarportLength())/35);
             b = (int) Math.round(a);
         pll = new PartListLine(parts.get(19), b); 
         plll.add(pll);

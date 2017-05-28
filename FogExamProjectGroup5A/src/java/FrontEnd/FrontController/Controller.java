@@ -21,6 +21,7 @@ public class Controller {
     
     CalculatorFacadeImpl cf;
     DBFacadeImpl dbf;
+    ArrayList<Part> parts = new ArrayList<Part>();
 //    SendMail sm;
     
     public void setup() throws Exception{
@@ -37,7 +38,7 @@ public class Controller {
         
         setup();
         
-        ArrayList<Part> parts = new ArrayList<Part>();
+        
         parts = dbf.getPartListHR();
         
         
@@ -59,7 +60,7 @@ public class Controller {
         
         setup();
         
-        ArrayList<Part> parts = new ArrayList<Part>();
+        
         parts = dbf.getPartListDUR();
         
         
@@ -80,8 +81,7 @@ public class Controller {
         
         setup();
         
-        //Creates a list with parts
-        ArrayList<Part> parts = new ArrayList<Part>();
+        //Creates a list with parts       
         parts = dbf.getPartListHR();
         
         
@@ -105,7 +105,6 @@ public class Controller {
         setup();
         
         //Creates a list with parts
-        ArrayList<Part> parts = new ArrayList<Part>();
         parts = dbf.getPartListDUR();
         
         

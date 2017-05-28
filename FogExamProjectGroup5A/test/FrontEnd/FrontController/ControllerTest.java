@@ -24,11 +24,11 @@ import static org.junit.Assert.*;
  */
 public class ControllerTest {
     
-    Controller ctrl;
-    CarportHR cpHR = new CarportHR(300,300,null,25);
-    CarportHR cpHR1 = new CarportHR(600,600,null,25);
-    CarportDUR cpDUR = new CarportDUR(300,300,null);
-    Customer c = new Customer("BenteBent","0000000","bent@bent.com","Bentevej 64");
+    private Controller ctrl;
+    private CarportHR cpHR = new CarportHR(300,300,null,25);
+    private CarportHR cpHR1 = new CarportHR(600,600,null,25);
+    private CarportDUR cpDUR = new CarportDUR(300,300,null);
+    private Customer c = new Customer("BenteBent","0000000","bent@bent.com","Bentevej 64");
 
     @Before
     public void setUp() throws Exception {
@@ -51,8 +51,8 @@ public class ControllerTest {
      */
     @Test
     public void testGetPriceHR() throws Exception {
-        System.out.println(ctrl.getPriceHR(cpHR1));
-        assertTrue("will it fizz", ctrl.getPriceHR(cpHR) == 1299.0);
+        double price = ctrl.getPriceHR(cpHR);       
+        assertTrue("Price is not correct", price == 12324.0);
         
     }
 
@@ -61,32 +61,50 @@ public class ControllerTest {
      */
     @Test
     public void testGetPriceDUR() throws Exception {
-       
-         assertTrue("will it fizz", ctrl.getPriceDUR(cpDUR) == 1198.0);
+        double price = ctrl.getPriceDUR(cpDUR);
+        assertTrue("will it fizz", price == 7301.0);
     }
 
     /**
      * Test of runHR method, of class Controller.
      */
     @Test
-    public void testRunHR() throws Exception {
-        ctrl.runHR(cpHR, c);
+    public void testRunHR() {        
+        boolean succes = true;
+        try{               
+                ctrl.runHR(cpHR, c);
+        } catch(Exception e){
+            succes = false;
+        }
+        assertTrue("Controller run failed",succes);
     }
 
     /**
      * Test of runDUR method, of class Controller.
      */
     @Test
-    public void testRunDUR() throws Exception {
-        ctrl.runDUR(cpDUR, c);
+    public void testRunDUR(){
+        boolean succes = true;
+        try{               
+            ctrl.runDUR(cpDUR, c);
+        } catch(Exception e){
+            succes = false;
+        }
+        assertTrue("Controller run failed",succes);
     }
 
     /**
      * Test of runReview method, of class Controller.
      */
     @Test
-    public void testRunReview() throws Exception {
-        ctrl.runReview(4);
+    public void testRunReview()  {
+            boolean succes = true;
+        try{     
+            ctrl.runReview(4);
+        } catch(Exception e){
+            succes = false;
+        }
+        assertTrue("Controller review failed",succes);
     }
     
 }

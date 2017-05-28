@@ -18,18 +18,16 @@ import static org.junit.Assert.*;
  */
 public class SendMailTest {
     
-    SendMail sm;
+       
+        SendMail sm;
     
     public SendMailTest() {
     }
     
 
     @Before
-    public void setUp() {
-        
-      
+    public void setUp() {  
         sm = new SendMail();
-
     }
  
 
@@ -40,5 +38,7 @@ public class SendMailTest {
     public void testMain() {
         System.out.println("Testing email-system");
     }
+    
+
     
 }

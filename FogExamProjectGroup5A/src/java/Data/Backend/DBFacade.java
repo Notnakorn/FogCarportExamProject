@@ -9,11 +9,8 @@ import java.util.ArrayList;
  * Our interface for the DBFade
  * It holds methods that help us communicate with the server. 
  * 
- * @author Kasper
+ * @author Kasper and Anton
  * 
- * - add place order.
- * - add place review.
- * - add store customer data. 
  */
 
 
