@@ -24,23 +24,15 @@ import static org.junit.Assert.*;
  */
 public class CarportCalculatorTest {
     
-    CarportCalculator cc;
-    DBFacadeImpl dbf;
-    ArrayList<Part> list;
-    SendMail sm;
-    
-    
-    public CarportCalculatorTest() {
-    }
+    private CarportCalculator cc;
+    private DBFacadeImpl dbf;
+    private ArrayList<Part> list;
+    private SendMail sm;
+    private Shed sh = new Shed(450,330);
+    private CarportHR cp = new CarportHR(480,360,sh,45);
+    private PartList pl = null;
+    private Customer c = new Customer("test","test","test","test");
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-    
 
     @Before
     public void setUp() throws Exception {
@@ -70,61 +62,32 @@ public class CarportCalculatorTest {
      */
     @Test
     public void testCalculateHRNoShedCount() {
-        Shed sh = new Shed(450,330);
-        CarportHR cp = new CarportHR(480,360,sh,45);
-        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).getPartList().get(0).getCount() == 4);       
+       int count = cc.calculateHRNoShed(list, cp).getPartList().get(0).getCount();
+        assertTrue("Calculator failed", count == 4);       
     }
     
     @Test
     public void testCalculateHRNoShedDescription() {
-        Shed sh = null;
-        CarportHR cp = new CarportHR(480,360,sh,45);
-        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).getPartList().get(0).getPart().getPartDescription().equalsIgnoreCase("Vindskeder på rejsning"));        
+        String d = cc.calculateHRNoShed(list, cp).getPartList().get(0).getPart().getPartDescription(); 
+        assertTrue("Calculator failed",d.equalsIgnoreCase("Vindskeder på rejsning"));        
     }
     
     @Test
     public void testCalculateHRNoShedLength() {
-        Shed sh = null;
-        CarportHR cp = new CarportHR(480,360,sh,45);
-        assertTrue("Calculator failed",cc.calculateHRNoShed(list, cp).getPartList().get(5).getPart().getPartLength() == 480);        
+        double l = cc.calculateHRNoShed(list, cp).getPartList().get(5).getPart().getPartLength();
+        assertTrue("Calculator failed", l == 480);        
     }
     
     @Test
-    public void testCalculateHRNoShedPrice() {
-        Shed sh = null;
-        CarportHR cp = new CarportHR(480,360,sh,45);
-        
-        PartList pl = null;
-        
+    public void testCalculateHRNoShedPrice() {        
         pl = cc.calculateHRNoShed(list, cp);
-        System.out.println(pl.toString());
-        assertTrue("Calculator failed",pl.getPrice() == 1299);        
+        assertTrue("Calculator failed",pl.getPrice() == 16499.0);        
     }
     @Test
-    public void testCalculateHRWithShedPrice() {
-        Shed sh = new Shed(450,330);
-        CarportHR cp = new CarportHR(480,360,sh,45);
-        
-        PartList pl = null;
-        
-        Customer c = new Customer("test","test","test","test");
-        
+    public void testCalculateHRWithShedPrice() {  
         pl = cc.calculateHRWittShed(list, cp);
-        System.out.println(pl.toString());
-        assertTrue("Calculator failed",pl.getPrice() == 48495.0);        
+        assertTrue("Calculator failed",pl.getPrice() == 29010.0);        
     }
-//    
-//    /**
-//     * Test of calculatorHRWittShed method, of class CarportCalculator.
-//     */
-//    @Test
-//    public void testCalculatorHRWittShedCount() {
-//        assertTrue("Calculator failed",cc.calculatorHRWittShed(list, 480, 360, 45,480,200).get(0).getCount() == 2);
-//    }
-//    @Test
-//    public void testCalculatorHRWittShedDescription() {
-//        assertTrue("Calculator failed",cc.calculatorHRWittShed(list, 480, 360, 45,480,200).get(0).getPart().getPartDescription().equalsIgnoreCase("Vindskeder på rejsning"));
-//    }
 
 
    
