@@ -54,9 +54,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
-        <li><a href="http://localhost:8080/FogExamProjectGroup5A/index.html">Home</a></li>
+        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Home</a></li>
         <li><a href="https://www.johannesfog.dk/byggecenter/om-fog/">About</a></li>
-        <li><a href="http://localhost:8080/FogExamProjectGroup5A/chooseCarportType.jsp">Carporte</a></li>
+        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.jsp">Carporte</a></li>
         <li><a href="https://johannesfog.dk/byggecenter/find-butik/">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
