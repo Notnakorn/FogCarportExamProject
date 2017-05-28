@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>addCarportCommand.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FogExamProjectGroup5A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">FrontEnd.FrontController</a> &gt; <span class="el_source">addCarportCommand.java</span></div><h1>addCarportCommand.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package FrontEnd.FrontController;
+
+import Data.Backend.DBFacadeImpl;
+import Data.BusinessLogic.Carport;
+import Data.BusinessLogic.CarportHR;
+import Data.BusinessLogic.CarportDUR;
+import Data.BusinessLogic.Shed;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ *
+ * @author Kornh
+ */
+public class addCarportCommand implements Command{
+       private String next;
+       
+       Controller ctr;
+<span class="nc" id="L25">    public addCarportCommand(String jsp) {</span>
+<span class="nc" id="L26">        next  = jsp;</span>
+<span class="nc" id="L27">    }</span>
+
+     
+ @Override
+    public String execute(HttpServletRequest request) throws CommandException {
+       
+        
+        try {
+<span class="nc" id="L35">            ctr = new Controller();</span>
+<span class="nc" id="L36">        } catch (Exception ex) {</span>
+<span class="nc" id="L37">            Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L38">        }</span>
+        
+        
+        
+                
+        //Width
+<span class="nc" id="L44">        setAttribute(&quot;width&quot;, 800.0, request);</span>
+<span class="nc" id="L45">        setAttribute(&quot;length&quot;, 800.0, request);</span>
+<span class="nc" id="L46">        setAttribute(&quot;height&quot;, 400.0, request);</span>
+<span class="nc" id="L47">        setAttribute(&quot;shedWidth&quot;, 0.0, request);</span>
+<span class="nc" id="L48">        setAttribute(&quot;shedLength&quot;, 0.0, request);</span>
+<span class="nc" id="L49">        setIntAttribute(&quot;angle&quot;, 0.0, request);</span>
+        
+        
+<span class="nc" id="L52">        double width = 0;</span>
+<span class="nc" id="L53">        double length = 0;</span>
+<span class="nc" id="L54">        double shedWidth = 0;</span>
+<span class="nc" id="L55">        double shedLength = 0;</span>
+<span class="nc" id="L56">        int angle = 0;</span>
+<span class="nc" id="L57">        double price = 0;</span>
+        
+        try{
+<span class="nc" id="L60">        String w = (String) request.getParameter(&quot;width&quot;);</span>
+<span class="nc" id="L61">        String l = (String) request.getParameter(&quot;length&quot;);</span>
+<span class="nc" id="L62">        String sw = (String) request.getParameter(&quot;shedWidth&quot;);</span>
+<span class="nc" id="L63">        String sl = (String) request.getParameter(&quot;shedLength&quot;);</span>
+<span class="nc" id="L64">        String a = (String) request.getParameter(&quot;angle&quot;);</span>
+        
+<span class="nc" id="L66">        width = Double.parseDouble(w);</span>
+<span class="nc" id="L67">        length = Double.parseDouble(l);</span>
+<span class="nc" id="L68">        shedWidth = Double.parseDouble(sw);</span>
+<span class="nc" id="L69">        shedLength = Double.parseDouble(sl);</span>
+<span class="nc" id="L70">        angle = Integer.parseInt(a);</span>
+        
+        }
+        
+<span class="nc" id="L74">        catch(NumberFormatException Ex){</span>
+<span class="nc" id="L75">            return &quot;error.jsp&quot;;</span>
+<span class="nc" id="L76">        }</span>
+         
+        
+
+       
+<span class="nc" id="L81">        Shed sh = null;</span>
+        try{
+<span class="nc bnc" id="L83" title="All 4 branches missed.">            if(shedWidth == 0 || shedLength == 0){</span>
+            }
+            else{
+<span class="nc" id="L86">            sh = new Shed(shedWidth,shedLength);    </span>
+            }
+        }    
+<span class="nc" id="L89">        catch(IllegalArgumentException ex){</span>
+<span class="nc" id="L90">            return &quot;error.jsp&quot;;</span>
+<span class="nc" id="L91">        }  </span>
+        try{
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if(angle &gt; 0){</span>
+
+<span class="nc" id="L95">            CarportHR carportHR = new CarportHR(width,length,sh,angle);</span>
+<span class="nc" id="L96">            setPriceHRAttribute(&quot;price&quot;, 0.0, carportHR ,request);</span>
+<span class="nc" id="L97">            price = ctr.getPriceHR(carportHR);</span>
+<span class="nc" id="L98">        }</span>
+        
+        else{
+<span class="nc" id="L101">            CarportDUR carportDUR = new CarportDUR(width,length,sh);</span>
+<span class="nc" id="L102">            setPriceDURAttribute(&quot;price&quot;, 0.0, carportDUR, request);</span>
+<span class="nc" id="L103">            price = ctr.getPriceDUR(carportDUR);</span>
+        }
+        
+        }
+<span class="nc" id="L107">        catch (Exception ex) {</span>
+<span class="nc" id="L108">            Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L109">            return &quot;error.jsp&quot;;</span>
+<span class="nc" id="L110">        }</span>
+
+        
+        
+        
+        {
+<span class="nc" id="L116">        return next;</span>
+        }
+        
+
+    }
+
+
+    private void setAttribute(String name, Object defaultValue, HttpServletRequest request)
+    {
+<span class="nc" id="L125">        String strVal = request.getParameter(name);</span>
+ 
+        try
+        {
+<span class="nc" id="L129">            request.setAttribute(name, Double.parseDouble(strVal));</span>
+        }
+<span class="nc" id="L131">        catch(NumberFormatException ex)</span>
+        {
+<span class="nc" id="L133">            request.setAttribute(name, defaultValue);</span>
+<span class="nc" id="L134">        }</span>
+<span class="nc" id="L135">    }    </span>
+    private void setPriceHRAttribute(String name, Object defaultValue, CarportHR carportHR, HttpServletRequest request) throws Exception
+    {
+<span class="nc" id="L138">        double price = 0;</span>
+<span class="nc" id="L139">        String strVal = request.getParameter(name);</span>
+        
+        try
+        {
+<span class="nc" id="L143">            request.setAttribute(name, price = ctr.getPriceHR(carportHR));</span>
+        }
+<span class="nc" id="L145">        catch(NumberFormatException ex)</span>
+        {
+<span class="nc" id="L147">            request.setAttribute(name, defaultValue);</span>
+<span class="nc" id="L148">        }</span>
+<span class="nc" id="L149">    }    </span>
+    
+    private void setPriceDURAttribute(String name, Object defaultValue, CarportDUR carportDUR, HttpServletRequest request) throws Exception
+    {
+<span class="nc" id="L153">        double price = 0;</span>
+<span class="nc" id="L154">        String strVal = request.getParameter(name);</span>
+ 
+        try
+        {
+<span class="nc" id="L158">            request.setAttribute(name, price = ctr.getPriceDUR(carportDUR));</span>
+        }
+<span class="nc" id="L160">        catch(NumberFormatException ex)</span>
+        {
+<span class="nc" id="L162">            request.setAttribute(name, defaultValue);</span>
+<span class="nc" id="L163">        }</span>
+<span class="nc" id="L164">    }    </span>
+    
+    private void setIntAttribute(String name, Object defaultValue, HttpServletRequest request)
+    {
+<span class="nc" id="L168">        String strVal = request.getParameter(name);</span>
+ 
+        try
+        {
+<span class="nc" id="L172">            request.setAttribute(name, Integer.parseInt(strVal));</span>
+        }
+<span class="nc" id="L174">        catch(NumberFormatException ex)</span>
+        {
+<span class="nc" id="L176">            request.setAttribute(name, defaultValue);</span>
+<span class="nc" id="L177">        }</span>
+<span class="nc" id="L178">    }    </span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

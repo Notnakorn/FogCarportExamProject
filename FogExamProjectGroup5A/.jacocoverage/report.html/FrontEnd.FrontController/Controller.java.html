@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FogExamProjectGroup5A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">FrontEnd.FrontController</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">
+package FrontEnd.FrontController;
+
+import Data.Backend.DBFacadeImpl;
+import Data.BusinessLogic.CarportDUR;
+import Data.BusinessLogic.CarportHR;
+import Data.BusinessLogic.Customer;
+import Data.BusinessLogic.Part;
+import Data.BusinessLogic.PartList;
+import Data.BusinessLogic.PartListLine;
+import Data.Calculator.CalculatorFacadeImpl;
+import Email.SendMail;
+import java.util.ArrayList;
+
+
+/**
+ *
+ * @author Katja Kaj
+ */
+<span class="fc" id="L20">public class Controller {</span>
+    
+    CalculatorFacadeImpl cf;
+    DBFacadeImpl dbf;
+<span class="fc" id="L24">    ArrayList&lt;Part&gt; parts = new ArrayList&lt;Part&gt;();</span>
+//    SendMail sm;
+    
+    public void setup() throws Exception{
+       
+<span class="fc" id="L29">         cf = new CalculatorFacadeImpl();</span>
+<span class="fc" id="L30">        dbf = new DBFacadeImpl();</span>
+//        sm = new SendMail();
+        
+     
+<span class="fc" id="L34">    }</span>
+    
+    public double getPriceHR(CarportHR cp) throws Exception {
+<span class="fc" id="L37">        double price = 0;</span>
+        
+<span class="fc" id="L39">        setup();</span>
+        
+        
+<span class="fc" id="L42">        parts = dbf.getPartListHR();</span>
+        
+        
+<span class="fc" id="L45">        PartList partList = null;</span>
+       
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if(cp.getShed() != null){</span>
+<span class="nc" id="L48">          partList = cf.calculateHRWithShed(parts, cp);</span>
+        } else {
+<span class="fc" id="L50">          partList = cf.calculateHRNoShed(parts, cp);</span>
+        };
+        
+<span class="fc" id="L53">        price = partList.getPrice();</span>
+        
+<span class="fc" id="L55">        return price;</span>
+    }
+    
+    public double getPriceDUR(CarportDUR cp) throws Exception {
+<span class="fc" id="L59">        double price = 0;</span>
+        
+<span class="fc" id="L61">        setup();</span>
+        
+        
+<span class="fc" id="L64">        parts = dbf.getPartListDUR();</span>
+        
+        
+<span class="fc" id="L67">        PartList partList = null;</span>
+       
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if(cp.getShed() != null){</span>
+<span class="nc" id="L70">          partList = cf.calculateDURWithShed(parts, cp);</span>
+        } else {
+<span class="fc" id="L72">          partList = cf.calculateDURNoShed(parts, cp);</span>
+        };
+        
+<span class="fc" id="L75">        price = partList.getPrice();</span>
+        
+<span class="fc" id="L77">        return price;</span>
+    }
+    
+    public void runHR(CarportHR cp, Customer c) throws Exception{
+        
+<span class="fc" id="L82">        setup();</span>
+        
+        //Creates a list with parts       
+<span class="fc" id="L85">        parts = dbf.getPartListHR();</span>
+        
+        
+<span class="fc" id="L88">        PartList partList = null;</span>
+       
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        if(cp.getShed() != null){</span>
+<span class="nc" id="L91">          partList = cf.calculateHRWithShed(parts, cp);</span>
+        } else {
+<span class="fc" id="L93">          partList = cf.calculateHRNoShed(parts, cp);</span>
+        };
+        
+//        sm.sendEmail(partList, c);
+<span class="fc" id="L97">        dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());</span>
+<span class="fc" id="L98">        dbf.createOrder(c.getCustomerEmail(), partList.toString());</span>
+        
+        
+<span class="fc" id="L101">    }</span>
+    
+    public void runDUR(CarportDUR cp, Customer c) throws Exception{
+        
+<span class="fc" id="L105">        setup();</span>
+        
+        //Creates a list with parts
+<span class="fc" id="L108">        parts = dbf.getPartListDUR();</span>
+        
+        
+<span class="fc" id="L111">        PartList partList = null;</span>
+       
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        if(cp.getShed() != null){</span>
+<span class="nc" id="L114">          partList = cf.calculateDURWithShed(parts, cp);</span>
+        } else {
+<span class="fc" id="L116">          partList = cf.calculateDURNoShed(parts, cp);</span>
+        };
+        
+//        sm.sendEmail(partList, c);
+<span class="fc" id="L120">        dbf.createCustomer(c.getCustomerName(), c.getCustomerPhoneNumber(), c.getCustomerEmail(), c.getCustomerAdress());</span>
+<span class="fc" id="L121">        dbf.createOrder(c.getCustomerEmail(), partList.toString());</span>
+        
+        
+<span class="fc" id="L124">    }</span>
+    
+    public void runReview(int reviewScore)throws Exception{
+<span class="fc" id="L127">        setup();</span>
+        
+<span class="fc" id="L129">        dbf.createReview(reviewScore);</span>
+<span class="fc" id="L130">    }</span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

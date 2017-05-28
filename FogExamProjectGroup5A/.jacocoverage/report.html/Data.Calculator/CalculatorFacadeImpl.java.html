@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CalculatorFacadeImpl.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FogExamProjectGroup5A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Data.Calculator</a> &gt; <span class="el_source">CalculatorFacadeImpl.java</span></div><h1>CalculatorFacadeImpl.java</h1><pre class="source lang-java linenums">
+package Data.Calculator;
+
+import Data.BusinessLogic.CarportDUR;
+import Data.BusinessLogic.CarportHR;
+import Data.BusinessLogic.Part;
+import Data.BusinessLogic.PartList;
+import Data.BusinessLogic.PartListLine;
+import java.util.ArrayList;
+
+/**
+ *Holds the CalculatorFacadeImpl that implements our calculatorFacade interface.
+ * 
+ * 
+ * 
+ * @author Kasper
+ */
+public class CalculatorFacadeImpl implements CalculatorFacade {
+    private CarportCalculator cc;
+
+<span class="nc" id="L21">    public CalculatorFacadeImpl(CarportCalculator cc) {</span>
+<span class="nc" id="L22">        this.cc = cc;</span>
+<span class="nc" id="L23">    }</span>
+    
+<span class="fc" id="L25">    public CalculatorFacadeImpl() throws Exception {</span>
+<span class="fc" id="L26">        this.cc = new CarportCalculator();</span>
+<span class="fc" id="L27">    }</span>
+    
+    
+    @Override
+    public PartList calculateHRNoShed(ArrayList&lt;Part&gt; list, CarportHR cp) {
+<span class="fc" id="L32">        return cc.calculateHRNoShed(list, cp);</span>
+    }
+
+    @Override
+    public PartList calculateHRWithShed(ArrayList&lt;Part&gt; list, CarportHR cp) {
+<span class="nc" id="L37">       return cc.calculateHRWittShed(list, cp);</span>
+    }
+
+    @Override
+    public PartList calculateDURNoShed(ArrayList&lt;Part&gt; list, CarportDUR cp) {
+<span class="fc" id="L42">        return cc.calculateDURNoShed(list, cp);</span>
+    }
+
+    @Override
+    public PartList calculateDURWithShed(ArrayList&lt;Part&gt; list, CarportDUR cp) {
+<span class="nc" id="L47">        return cc.calculateDURWithShed(list, cp);</span>
+    }
+
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

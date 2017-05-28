@@ -12,17 +12,52 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/customerReview.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/reviewDone.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignPointyRoof3.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/error.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignPointyRoof2.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/chooseCarportType.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/carportDrawing.js</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/index.html</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignFlatRoof3.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/carportDesignFlatRoof2.jsp</file>
-            <file>file:/C:/Users/Katja%20Kaj/Documents/GitHub/FogCarportExamProject/FogExamProjectGroup5A/web/orderCarport.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Part.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/carportDrawing.js</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/Backend/DBFacadeImpl.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/orderCarport.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/customerReview.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Email/SendMail.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/SVGDrawing/SVGDrawShed.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Calculator/CalculatorFacadeImpl.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/drawCarportCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/FrontController.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/test/BusinessLogic/Email/SendMailTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/Backend/DBFacade.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/SVGDrawing/SVGDrawCompleteCarport.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Carport.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/carportOrderCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/index.html</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/carportDesignFlatRoof2.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/PartList.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Customer.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/test/FrontEnd/ControllerTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/carportDesignPointyRoof3.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/test/BusinessLogic/Calculator/CarportCalculatorTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/SVGDrawing/SVGDrawCarport.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/CarportDUR.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Calculator/CalculatorFacade.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/error.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/CarportHR.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/carportDesignPointyRoof2.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/carportTypeCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/CommandException.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/carportDesignFlatRoof3.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/test/Backend/DataAccessObjectTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Shed.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/addCarportCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Order.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/test/BusinessLogic/CarportTest.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/Backend/DataAccessObject.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/Command.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/reviewDone.jsp</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/Controller.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/FrontEnd/reviewCommand.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/StringUtil.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/web/CSS/FogCarportCSS.css</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/PartListLine.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/BusinessLogic/Calculator/CarportCalculator.java</file>
+            <file>file:/C:/Users/Katja%20Kaj/Documents/NetBeansProjects/FogExamProjectGroup5A/src/java/Backend/DBConnector.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : carpportDesignPointyRoof
     Created on : 05-05-2017, 12:45:27
-    Author     : Kornh
+    Author     : @author Kasper and Anton
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,9 +32,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Home</a></li>
+         <li><a href="http://207.154.197.214:8080/FogExamProjectGroup5A/index.html">Carporte</a></li>
         <li><a href="https://www.johannesfog.dk/byggecenter/om-fog/">About</a></li>
-        <li><a href="http://http://207.154.197.214:8080/FogExamProjectGroup5A/index.jsp">Carporte</a></li>
         <li><a href="https://johannesfog.dk/byggecenter/find-butik/">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -56,8 +55,8 @@
         Med Skur:  <input type="radio" onclick="javascript:showShed();" checked="checked" name="shedChoice" id="withShed"/>
         Uden Skur: <input type="radio" onclick="javascript:showShed();" name="shedChoice" id="withoutShed"/>
         <div id="shed" style="display:block">
-        <input type="number" placeholder="Skur-Bredde" name="shedLength" id="shedLength" value="">
-        <input type="number" placeholder="Skur-Længde" name="shedWidth" id="shedWidth" value="">
+        <input type="number" placeholder="Skur-Længde" id="shedLength" name="shedLength" value="">
+        <input type="number" placeholder="Skur-Bredde" id="shedWidth"name="shedWidth" value="">
         </div>
         <input type="hidden" id="height" name="height" value="210" >
         
@@ -72,7 +71,7 @@
             <option value="45">45</option>
         </select>
         
-        <input type="button" value="Check Measurements" onclick="checkCarportMeasurements();">
+        <input type="button" value="Tjek Mål" onclick="checkCarportMeasurements();">
         <button onclick="checkCarportMeasurements();"> Tegn Carport</button>
         
         <input type="hidden" name="cmd" value="draw-carport">

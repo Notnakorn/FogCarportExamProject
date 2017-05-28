@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>drawCarportCommand.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FogExamProjectGroup5A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">FrontEnd.FrontController</a> &gt; <span class="el_source">drawCarportCommand.java</span></div><h1>drawCarportCommand.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package FrontEnd.FrontController;
+
+
+import Data.Backend.DBFacadeImpl;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ *
+ * @author Kornh
+ */
+public class drawCarportCommand implements Command{
+    
+
+    private String next;
+    
+<span class="nc" id="L24">    public drawCarportCommand(String jsp) {</span>
+<span class="nc" id="L25">        next  = jsp;</span>
+<span class="nc" id="L26">    }</span>
+
+    
+    @Override
+    public String execute(HttpServletRequest request) throws CommandException {
+       
+        DBFacadeImpl facade;
+        try {
+<span class="nc" id="L34">            facade = new DBFacadeImpl();</span>
+<span class="nc" id="L35">        } catch (Exception ex) {</span>
+<span class="nc" id="L36">            Logger.getLogger(carportOrderCommand.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L37">        }</span>
+        
+                
+        //Width
+<span class="nc" id="L41">        setAttribute(&quot;width&quot;, 800.0, request);</span>
+<span class="nc" id="L42">        setAttribute(&quot;length&quot;, 800.0, request);</span>
+<span class="nc" id="L43">        setAttribute(&quot;height&quot;, 400.0, request);</span>
+<span class="nc" id="L44">        setAttribute(&quot;shedWidth&quot;, 0.0, request);</span>
+<span class="nc" id="L45">        setAttribute(&quot;shedLength&quot;, 0.0, request);</span>
+<span class="nc" id="L46">        setIntAttribute(&quot;angle&quot;, 0, request);</span>
+        
+<span class="nc" id="L48">        int angle = 0;</span>
+<span class="nc" id="L49">        String a = (String) request.getParameter(&quot;angle&quot;);</span>
+<span class="nc" id="L50">        angle = Integer.parseInt(a);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if(angle &gt; 0){</span>
+<span class="nc" id="L52">            return &quot;carportDesignPointyRoof3.jsp&quot;;</span>
+        }
+//        
+//        
+//   
+//        double width = 0;
+//        double length = 0;
+//        double shedWidth = 0;
+//        double shedLength = 0;
+//        double height = 0;
+//        int strokeWidth = 5;
+//        
+//        try{
+//        String w = (String) request.getParameter(&quot;width&quot;);
+//        String l = (String) request.getParameter(&quot;length&quot;);
+//        String h = (String) request.getParameter(&quot;height&quot;);
+//        String sw = (String) request.getParameter(&quot;shedWidth&quot;);
+//        String sl = (String) request.getParameter(&quot;shedLength&quot;);
+//        
+//        
+//     
+//        
+//        width = Double.parseDouble(w);
+//        length = Double.parseDouble(l);
+//        shedWidth = Double.parseDouble(sw);
+//        shedLength = Double.parseDouble(sl);
+//        height = Double.parseDouble(h);
+//        
+//        
+//        
+//        }
+//        catch(NullPointerException Ex){
+//            return &quot;error.jsp&quot;;
+//        }
+        
+ 
+        {
+<span class="nc" id="L89">        return next;</span>
+        }
+
+    }
+    
+    private void setAttribute(String name, Object defaultValue, HttpServletRequest request)
+    {
+<span class="nc" id="L96">        String strVal = request.getParameter(name);</span>
+
+        try
+        {
+<span class="nc" id="L100">            request.setAttribute(name, Double.parseDouble(strVal));</span>
+        }
+<span class="nc" id="L102">        catch(NumberFormatException ex)</span>
+        {
+<span class="nc" id="L104">            request.setAttribute(name, defaultValue);</span>
+<span class="nc" id="L105">        }</span>
+<span class="nc" id="L106">    }    </span>
+    private void setIntAttribute(String name, Object defaultValue, HttpServletRequest request)
+    {
+<span class="nc" id="L109">        String strVal = request.getParameter(name);</span>
+
+        try
+        {
+<span class="nc" id="L113">            request.setAttribute(name, Integer.parseInt(strVal));</span>
+        }
+<span class="nc" id="L115">        catch(NumberFormatException ex)</span>
+        {
+<span class="nc" id="L117">            request.setAttribute(name, defaultValue);</span>
+<span class="nc" id="L118">        }</span>
+<span class="nc" id="L119">    }    </span>
+    
+    
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
